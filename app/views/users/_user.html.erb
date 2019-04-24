@@ -3,6 +3,8 @@
   <div class="media-body1">
     <h5 class="mt-0"><b><%= user.name %></b> <span>user_id:<%= user.id %></span></h5>
     <p>email:<%= user.email %></p>
-    <p>password:<%= user.password %></p>
+    <div class="w-100">
+      <p class="w-100">password:<%= user.password_digest %></p>
+    </div>
   </div> 
 </div>

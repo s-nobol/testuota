@@ -31,6 +31,8 @@ end
 # rails g model User name:string email:string password:string
 # rails g controller Users new show index edit
 
+# パスワード設定
+
 # ユーザーカラム追加
 # rails g migration add_image_to_users (ひとこと:message　メールの受信:mail ユーザー画像:image)
 
