@@ -2,10 +2,10 @@ require 'test_helper'
 
 class SigunupUserTest < ActionDispatch::IntegrationTest
   # サインアップのテスト
-  def setup
-    # @user = users(:first_user)
-    # @other_user = users(:second_user)
-  end
+  # def setup
+  #   # @user = users(:first_user)
+  #   # @other_user = users(:second_user)
+  # end
   
   test "user_signup" do
     
@@ -15,12 +15,12 @@ class SigunupUserTest < ActionDispatch::IntegrationTest
     
     # 間違ったデータを送信 
     assert_no_difference "User.count" do
-      post users_path, params: {user: {name: "",email: "",password: "dddd",}}
+      post users_path, params: {user: {name: "",email: "",password: "dddd", password_confirmation: "foobar"}}
     end
     assert_template "users/new"
     # 間違ったデータを送信
     assert_no_difference "User.count" do
-      post users_path, params: {user: {name: "123",email: "132132",password: "dddd",}}
+      post users_path, params: {user: {name: "123",email: "132132",password: "dddd", password_confirmation: "foobar"}}
     end
     assert_template "users/new"
     
@@ -28,7 +28,7 @@ class SigunupUserTest < ActionDispatch::IntegrationTest
     name = "test_user"
     email = "test_user@test.com"
     assert_difference "User.count",1 do
-      post users_path, params: {user: {name: name, email: email, password: "password",}}
+      post users_path, params: {user: {name: name, email: email, password: "password", password_confirmation: "password"}}
     end
     # assert_redirected_to @user
     follow_redirect!
@@ -48,7 +48,7 @@ class SigunupUserTest < ActionDispatch::IntegrationTest
     
     # 間違ったデータを送信 
     assert_no_difference "User.count" do
-      post users_path, params: {user: {name: "",email: "",password: "dddd",}}
+      post users_path, params: {user: {name: "",email: "",password: "dddd", password_confirmation: "foobar"}}
     end
     assert_template "users/new"
     # 間違ったデータを送信
@@ -57,7 +57,7 @@ class SigunupUserTest < ActionDispatch::IntegrationTest
     name = "test_user"
     email = "test_user@test.com"
     assert_difference "User.count",1 do
-      post users_path, params: {user: {name: name, email: email, password: "password",}}
+      post users_path, params: {user: {name: name, email: email, password: "password", password_confirmation: "password"}}
     end
     # assert_redirected_to @user
     follow_redirect!
