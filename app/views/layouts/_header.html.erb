@@ -1,0 +1,20 @@
+<header class="bg-dark ">
+  <div class="container">
+    <h5 class="text-white float-left">鉄オタ速報</h5>
+    
+    <nav class="nav justify-content-end p-0">
+      <% if session[:user_id] %>
+          <%#= link_to "記事作成", new_post_path, class: "nav-link" %>
+          <%#= link_to "記事一覧",  posts_path , class: "nav-link" %>
+          <%= link_to "#{current_user.name}", "#", class: "nav-link" %>
+          <%= link_to "ユーザー一覧", "#" , class: "nav-link" %>
+          <%= link_to "ユーザー削除", "#" , method: :delete , class: "nav-link" %>
+      <% else %>
+          <small><b><a class="nav-link  p-1" href="#">ホーム</a></b></small>
+          <small><b><a class="nav-link  p-1" href="#">about</a></b></small>
+          <small><b><%= link_to "新規登録", "#" ,class:"nav-link p-1" %></b></small>
+          <small><b><%= link_to "ログイン", "#" ,class:"nav-link p-1" %></b></small>  
+      <% end %>
+    </nav>
+  </div>
+</header>
