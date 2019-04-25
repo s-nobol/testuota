@@ -1,7 +1,39 @@
 class User < ApplicationRecord
+  
+  attr_accessor :cookies_token
+  
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true
   
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  
+  
+  # 渡された文字列のハッシュ値を返す
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+  
+    # ランダムなトークンを返す
+  def create_token
+    SecureRandom.urlsafe_base64
+  end
+
+  # 永続セッションのためにユーザーをデータベースに記憶する
+  def create_cookies_digest
+    self.cookies_token = create_token
+    update_attribute(:cookies_digest, User.digest(cookies_token))
+  end
+  
+  # 渡されたトークンがダイジェストと一致したらtrueを返す
+  def authenticated?(token)
+    BCrypt::Password.new(cookies_digest).is_password?(token)
+  end
+  
+  # ユーザーのログイン情報を破棄する
+  def forget
+    update_attribute(:cookies_digest, nil)
+  end
 end

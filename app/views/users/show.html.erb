@@ -6,8 +6,8 @@
     <div class="col-4 ">
       <p class="border-bottom">ユーザー詳細</p>
       <%= render @user%>
-      
       <p class="border-bottom">ユーザーリンク</p>
+      <p><%= link_to "ユーザー編集", edit_user_path(@user) ,class:"" %></p>
     </div>
     
     <div class="col-8 border-bottom">

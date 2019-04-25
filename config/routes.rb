@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'sessions/new'
    # 企業ポリシーページ
   get 'static_pages/home'
   get 'static_pages/about'
@@ -7,6 +8,11 @@ Rails.application.routes.draw do
   get 'static_pages/agreement'
   get 'static_pages/policy'
   get 'static_pages/corporate'
+  
+  # ログイン
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
  
   # サインアップ
   get 'signup', to: 'users#new'
@@ -15,6 +21,10 @@ Rails.application.routes.draw do
   root "users#new"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users 
+  # resources :password_resets,     only: [:new, :create, :edit, :update]
+  # resources :posts,               only: [:show, :create, :destroy]
+  # resources :comments,            only: [:create, :destroy]
+  # resources :likes,               only: [ :show, :create, :destroy]
 end
 
 
@@ -32,6 +42,11 @@ end
 # rails g controller Users new show index edit
 
 # パスワード設定
+# rails g migration add_password_digest_to_users  
+
+# セッション作成
+# rails g controller Sessions new
+# rails g migration add_cookies_to_users cookies_digest:string
 
 # ユーザーカラム追加
 # rails g migration add_image_to_users (ひとこと:message　メールの受信:mail ユーザー画像:image)

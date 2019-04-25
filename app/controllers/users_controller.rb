@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      
+      # ログインする
+      session_login(@user)
+      cookies_login(@user)
+      
       flash[:success] = "こんにちは#{@user}さん　アカウントの登録が完了しました"
       redirect_to @user
     else
