@@ -32,4 +32,10 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:token)
   end
+  
+  
+  # アクセスしようとしたURLを覚えておく
+  # def store_location
+  #   session[:url] = request.original_url if request.get?
+  # end
 end

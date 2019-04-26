@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_24_170605) do
+ActiveRecord::Schema.define(version: 2019_04_25_133813) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 2019_04_24_170605) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "cookies_digest"
+    t.string "image"
+    t.text "message"
+    t.string "address"
+    t.string "gender"
+    t.date "birthday"
+    t.boolean "notice_email", default: true
+    t.boolean "notice_message", default: true
   end
 
 end
