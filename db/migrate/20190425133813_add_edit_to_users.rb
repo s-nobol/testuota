@@ -7,8 +7,9 @@ class AddEditToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :message, :text
     add_column :users, :address, :string #ドロップリスト
     add_column :users, :gender, :string #ドロップリスト
-    add_column :users, :birthday, :date　
+    add_column :users, :birthday, :date
     add_column :users, :notice_email, :boolean, default: true
     add_column :users, :notice_message, :boolean, default: true
+    # 設定変更完了
   end
 end
