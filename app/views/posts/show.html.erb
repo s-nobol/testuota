@@ -1,0 +1,51 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+
+<div>
+  <div >
+    <!--タイトル-->
+    
+    <!--画像-->
+    <div class="bg-dark text-white p-2">
+      <h3><b><%= @post.title %></b></h3>
+    
+      <%= image_tag("top_image.jpg", class:"img-fluid" )%>
+    </div>
+    
+    <!--記事ステータス-->
+    <div class="bg-dark text-white">
+      <span class="p-3">view 1500</span> <span class="p-3">like 150</span> <span class="p-3">comments 20</span>
+      <span><%= link_to "編集する", edit_post_path(@post) ,class:"text-white" %></span>
+      <span><%= link_to "削除する", post_path(@post), method: :delete  ,class:"text-danger" %></span>
+    </div>
+    
+    <!--テキスト-->
+    <div class="p-3 mb-5">
+      <span><%= @post.content %></span>
+    </div>
+    
+    
+    <div class="row">
+    
+    
+      <div class="col-9 border-bottom">
+        <p  class="bg-dark text-white p-2">コメント</p>
+         <% if !@comments.nil?  %>
+              <%= render  @comments %>
+              <%= paginate  @comments, window: 2 %>
+        <% end %>
+        <%= render "comments/comment_form"%>
+      </div>
+      
+      <div class="col-3 ">
+        <p class="bg-dark text-white p-2">記事詳細</p>
+        
+        <div class="p-2">
+          <%= link_to "写真を通報する", "#" ,class:"btn btn-outline-dark btn-lg btn-block p-0" %>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>

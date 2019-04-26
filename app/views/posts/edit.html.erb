@@ -1,0 +1,23 @@
+<h1>Posts#edit</h1>
+<p>Find me in app/views/posts/edit.html.erb</p>
+
+<div class="row"> 
+    <div class="col-3 ">
+      <p class="border-bottom">ユーザー詳細</p>
+      
+      <!--ユーザープロフィール-->
+      <% @user = current_user %>
+      <%= render @user %>
+      
+      <!--ユーザーステータス--> 
+      <p class="border-bottom">ユーザーリンク</p>
+      <%= render "users/user_status" %>
+      
+    </div>
+    
+    <div class="col-9 border-bottom">
+      <p  class="border-bottom">投稿一覧</p>
+        <!--投稿フォーム-->
+        <%= render "posts/post_form" %>
+    </div>
+</div>

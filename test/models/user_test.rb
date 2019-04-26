@@ -36,5 +36,21 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  # ユーザーを消すとPostも消えるか？
+  test "associated microposts should be destroyed" do
+    @user.save
+    @user.posts.create!(title: "test-title", content: "Lorem ipsum")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
   
+  # ユーザーを消すとcommentも消えるか？
+  # test "associated microposts should be destroyed" do
+  #   @user.save
+  #   @user.posts.create!(title: "test-title", content: "Lorem ipsum")
+  #   assert_difference 'Post.count', -1 do
+  #     @user.destroy
+  #   end
+  # end
 end

@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# one:
+#   title: MyString
+#   content: MyText
+#   location: 
+#   picture: 
+#   sound: MyString
+#   user: one
+
+# two:
+#   title: MyString
+#   content: MyText
+#   location: 
+#   picture: 
+#   sound: MyString
+  # user: two
+
+first_post:
+    title: MyString
+    content: MyText
+    location: 
+    picture: 
+    sound: MyString
+    user: first_user
+    created_at: <%= 2.hours.ago %>
+    
+second_post:
+    title: MyString
+    content: MyText
+    location: 
+    picture: 
+    sound: MyString
+    user: second_user
+    
+# therd_post:
+#     title: MyString
+#     content: MyText
+#     location: 
+#     picture: 
+#     sound: MyString
+#     user: first_user
+last_post:
+    title: last
+    content: last_context
+    location: 
+    picture: 
+    sound: MyString
+    user: first_user

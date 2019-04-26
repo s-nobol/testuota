@@ -5,3 +5,42 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create(name: "123", 
+            email: "123@example.com",
+            password: "123123",
+             )
+
+15.times do |n|
+  User.create(name: "#{n}_user", 
+              email: "#user_#{n}@test.com",
+              password: "password",
+               )
+end
+
+users = User.order(:created_at).take(6)
+
+15.times do |n|
+  title = "Test#{n}"
+  content = "これはテスト記事です　カウント#{n}回"
+  users.each { |user| user.posts.create!(title: title, content: content) }
+end
+
+# フォロワーの作成
+# users = User.all
+# user  = users.first
+# following = users[2..10]
+# followers = users[3..10]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }
+
+
+# コメント（5個）
+
+5.times do |n|
+  posts = Post.all.take(5-n)
+  posts.each do |post|
+      users[n].comments.create!(content: "テストコメント#{n}", post: post)
+      # users[n].likes.create!(post: post)
+  end
+end
+  

@@ -1,7 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
 <div class="row"> 
     <div class="col-3 ">
       <p class="border-bottom">ユーザー詳細</p>
@@ -15,23 +13,14 @@
           <%= render "users/user_status" %>
       <% end %>
       
+      <p>最新の記事</p>
+      
     </div>
     
     <div class="col-9 border-bottom">
-      <p  class="border-bottom">投稿一覧</p>
+      <p  class="border-bottom">写真一覧</p>
       
-      <%= link_to "投稿する", new_post_path, class:"btn btn-primary btn-lg btn-block p-0" %>
-      
-      <!--記事の作成数-->
-      <%= @user.posts.count %>
-      
-      <% if !@posts.nil? %>
-      
-          <%= render @posts %>
-          <%= paginate  @posts, window: 2 %>
-      <% else %>
-      
-      
-      <% end %>
+      <%= render @posts %>
+      <%= paginate  @posts, window: 2 %>
     </div>
 </div>

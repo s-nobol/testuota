@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'sessions/new'
+
    # 企業ポリシーページ
   get 'static_pages/home'
   get 'static_pages/about'
@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users 
   # resources :password_resets,     only: [:new, :create, :edit, :update]
-  # resources :posts,               only: [:show, :create, :destroy]
-  # resources :comments,            only: [:create, :destroy]
+  resources :posts
+  resources :comments,            only: [:create, :destroy]
   # resources :likes,               only: [ :show, :create, :destroy]
 end
 
@@ -52,8 +52,8 @@ end
 # rails g migration add_image_to_users (ひとこと:message　メールの受信:mail ユーザー画像:image)
 
 # post
-# rails g model Post content:text user:references
-# rails g controller Posts show
+# rails g model Post title:string content:text location:string picture:string sound:string user:references
+# rails g controller Posts new show edit index  
 
 # comment
 # rails g model Comment content:string user:references post:references
