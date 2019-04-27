@@ -18,3 +18,26 @@
 #image:hover{
   opacity: 0.6
   }
+  
+.bg-black{
+   background-color: black; 
+  }
+  
+.border-black{
+  border: 5px solid black;
+  }
+img:hover{
+  opacity: 0.7;
+  }
+  
+/*Likeボタン*/
+#bg-heart{
+ color: red; 
+ border:solid 1px red; 
+  border-radius: 50px
+}
+#bg-heart:hover{
+ background-color: red; 
+ color: white;
+}
+  

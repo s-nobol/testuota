@@ -1,8 +1,16 @@
+<!--トップ画-->
+<%= render "layouts/top_image"%>
+
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
+
+<div class="container">
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+
 <div class="row"> 
-    <div class="col-3 ">
-      <p class="border-bottom">ユーザー詳細</p>
+    <div class="col-2 ">
+      <p class="border-bottom">最新の記事</p>
       
       <% if @user %>
           <!--ユーザープロフィール-->
@@ -13,8 +21,6 @@
           <%= render "users/user_status" %>
       <% end %>
       
-      <p>最新の記事</p>
-      
     </div>
     
     <div class="col-9 border-bottom">
@@ -23,4 +29,5 @@
       <%= render @posts %>
       <%= paginate  @posts, window: 2 %>
     </div>
+</div>
 </div>

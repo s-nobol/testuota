@@ -18,12 +18,12 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   
-  root "users#new"
+  root "static_pages#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users 
   # resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :posts
-  resources :comments,            only: [:create, :destroy]
+  resources :comments,            only: [:show, :create, :destroy]
   # resources :likes,               only: [ :show, :create, :destroy]
 end
 
@@ -58,6 +58,11 @@ end
 # comment
 # rails g model Comment content:string user:references post:references
 # rails g controller Comments new 
+
+# Viewの修正
+
+# Like作成
+
 
 # (まとめ記事、撮り鉄スポット)ポスト
 # rails g model Eventpost content:text image:string

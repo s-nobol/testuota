@@ -23,6 +23,11 @@ class CommentsController < ApplicationController
     flash[:danger] = "コメント削除しました"
     redirect_to post_path(@post)
   end
+  
+  def show
+    @user = User.find(params[:id])
+    @comments = @user.comments.page(params[:page]).per(10)
+  end
 
   private
     def comment_params

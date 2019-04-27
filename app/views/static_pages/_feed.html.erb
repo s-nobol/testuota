@@ -1,22 +1,14 @@
-<div class="border p-3">
-  <div>
-    <h5><b>最新の記事</b></h5>
-  </div>
-  
-  <div>
-    <p>検索</p>
-  </div>
-  
-  <div>
-    <!--@user.likes.count-->
-    <%= link_to "お気に入り", "#", class:"text-dark" %></br>
+<div class=" p-1">
+  <div class=" border-black">
+    <!--// 画像があるときは画像を表示する-->
+    <%# if user.image.present? %>
+      <%#= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon") %>
+    <%# else %>
+      <%= image_tag("user_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"80") %>
+    <%# end %>
     
-    <!--@user.count.count-->
-    <%= link_to "コメント", "#", class:"text-dark" %></br>
-    
-    <%= link_to "メッセージ", "#", class:"text-dark" %></br>
-    
-    <!--自分が保存したロケーションの数-->
-    <%= link_to "おすすめスポット", "#", class:"text-dark" %></br>
+    <div class="bg-black">
+      <small class="text-white">これはテスト記事</small>
+    </div>
   </div>
 </div>

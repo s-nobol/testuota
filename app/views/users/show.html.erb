@@ -1,37 +1,56 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!--トップ画-->
+<%= render "layouts/top_image"%>
+
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
 
 
-<div class="row"> 
-    <div class="col-3 ">
-      <p class="border-bottom">ユーザー詳細</p>
+<div class="container">
+
+  <h1>Users#show</h1>
+  <p>Find me in app/views/users/show.html.erb</p>
+
+  <div class="row"> 
+      <div class="col-3 ">
+        <p class="border-bottom">ユーザー詳細</p>
+        
+        <% if @user %>
+            <!--ユーザープロフィール-->
+            <%= render @user %>
+            
+            <!--ユーザーステータス--> 
+            <p class="border-bottom">ユーザーリンク</p>
+            <%= render "users/user_status" %>
+        <% end %>
+        
+      </div>
       
-      <% if @user %>
-          <!--ユーザープロフィール-->
-          <%= render @user %>
-          
-          <!--ユーザーステータス--> 
-          <p class="border-bottom">ユーザーリンク</p>
-          <%= render "users/user_status" %>
-      <% end %>
-      
-    </div>
-    
-    <div class="col-9 border-bottom">
-      <p  class="border-bottom">投稿一覧</p>
-      
-      <%= link_to "投稿する", new_post_path, class:"btn btn-primary btn-lg btn-block p-0" %>
-      
-      <!--記事の作成数-->
-      <%= @user.posts.count %>
-      
-      <% if !@posts.nil? %>
-      
-          <%= render @posts %>
-          <%= paginate  @posts, window: 2 %>
-      <% else %>
+      <div class="col-7 border-bottom">
+        <p  class="border-bottom">投稿一覧</p>
+        
+        
+        <!--記事の作成数-->
+        
+        <% if !@posts.nil? %>
+            <%= render @posts %>
+            <%= paginate  @posts, window: 2 %>
+        <% else %>
+        
+        
+        <% end %>
+      </div>
       
       
-      <% end %>
-    </div>
+         
+      <div class="col-2 border-bottom">
+        <p  class="border-bottom">人気の記事</p>
+        
+        
+        <!--記事の作成数-->
+        
+        <%# 10.times do %>
+          <%#= render "static_pages/feed" %>
+        <%# end %>
+      </div>
+  </div>
 </div>

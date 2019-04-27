@@ -1,2 +1,55 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+
+<!--トップ画-->
+<%= render "layouts/top_image"%>
+
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
+
+
+<div class="container">
+
+  <h1>StaticPages#home</h1>
+  <p>Find me in app/views/static_pages/home.html.erb</p>
+
+  <div class="row"> 
+      <div class="col-2 ">
+        <p class="border-bottom">人気の記事</p>
+        
+        <div class="bg-light">
+          <% 10.times do %>
+            <%= render "static_pages/feed" %>
+          <% end %>
+        </div>
+        
+        
+        
+      </div>
+      
+      <div class="col-7 border-bottom">
+        <p  class="border-bottom">最新の記事</p>
+        
+        
+        <!--記事の作成数-->
+        
+        <% if !@posts.nil? %>
+            <%= render @posts %>
+            <%= paginate  @posts, window: 2 %>
+        <% else %>
+        
+        
+        <% end %>
+      </div>
+      
+      <div class="col-3 pr-5 pl-5">
+        <p class="border-bottom">人気の記事</p>
+        
+        <div class="bg-light">
+          <% 10.times do %>
+            <%= render "static_pages/feed" %>
+          <% end %>
+        </div>
+        
+      </div>
+  </div>
+</div>
+

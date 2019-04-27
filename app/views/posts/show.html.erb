@@ -1,51 +1,71 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<!--トップ画-->
+<%#= render "layouts/top_image"%>
 
-<div>
-  <div >
-    <!--タイトル-->
-    
-    <!--画像-->
-    <div class="bg-dark text-white p-2">
-      <h3><b><%= @post.title %></b></h3>
-    
-      <%= image_tag("top_image.jpg", class:"img-fluid" )%>
-    </div>
-    
-    <!--記事ステータス-->
-    <div class="bg-dark text-white">
-      <span class="p-3">view 1500</span> <span class="p-3">like 150</span> <span class="p-3">comments 20</span>
-      <span><%= link_to "編集する", edit_post_path(@post) ,class:"text-white" %></span>
-      <span><%= link_to "削除する", post_path(@post), method: :delete  ,class:"text-danger" %></span>
-    </div>
-    
-    <!--テキスト-->
-    <div class="p-3 mb-5">
-      <span><%= @post.content %></span>
-    </div>
-    
-    
-    <div class="row">
-    
-    
-      <div class="col-9 border-bottom">
-        <p  class="bg-dark text-white p-2">コメント</p>
-         <% if !@comments.nil?  %>
-              <%= render  @comments %>
-              <%= paginate  @comments, window: 2 %>
-        <% end %>
-        <%= render "comments/comment_form"%>
-      </div>
-      
-      <div class="col-3 ">
-        <p class="bg-dark text-white p-2">記事詳細</p>
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
+
+<div class="container">
+  <!--<h1>鉄道写真投稿ページ</h1>-->
+  <div class="row"> 
+    <div class="col-9 border-bottom">
+                
+          <p  class="border-bottom">投稿画像</p>
+          <h3><b><%= @post.title %></b></h3>
+          
+          <!--画像-->
+           <div class="">
+            <%= image_tag("top_image.jpg", class:"img-fluid" )%>
+          </div>
+          
+          <!--テキスト-->
+          <div class="p-3 mb-3">
+              <span><%= @post.content %></span>
+          </div>
+          
+          <!--コメント-->
+          <div class="p-3">
+          <p  class=" border-bottom text-dark">コメント</p>
+            <% if !@comments.nil?  %>
+                  <%= render  @comments %>
+                  <%= paginate  @comments, window: 2 %>
+            <% end %>
+            <%= render "comments/comment_form"%>
+            
+            
+            <!--他の写真-->
+            <!--<p  class="bg-black text-white p-2"><%#= @post.user.name %>さんの他の写真</p>-->
+          </div>
+            
+          
+          
         
-        <div class="p-2">
-          <%= link_to "写真を通報する", "#" ,class:"btn btn-outline-dark btn-lg btn-block p-0" %>
-        </div>
       </div>
-      
-      
-    </div>
+  
+      <div class="col-3 ">
+        <p class="border-bottom">画像詳細</p>
+        
+        <!--ユーザープロフィール-->
+        <% @user = @post.user %>
+        <%= render @user %>
+        
+        <!--ユーザーステータス-->
+        <!--<p class="border-bottom">ユーザーリンク</p>-->
+        <%#= render "users/user_status" %>
+        
+        <!--ポストステータス-->
+        <p class="border-bottom">ポストステータス</p>
+        <%= render "posts/post_status" %>
+        
+      </div>
   </div>
+  
+  
+  <!--その他人気の写真-->
+  <div class="mt-5">
+    <p><spna class="">その他人気の画像</spna></p>
+    <% 8.times do %>
+      <%= render @post %>
+    <% end %>
+  </div>
+  
 </div>
