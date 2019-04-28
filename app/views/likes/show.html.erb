@@ -1,0 +1,36 @@
+<!--トップ画-->
+<%= render "layouts/top_image"%>
+
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
+
+
+<div class="container">
+
+  <div class="row"> 
+      <div class="col-3 ">
+        <p class="border-bottom">ユーザー詳細</p>
+        
+        <% if @user %>
+            <!--ユーザープロフィール-->
+            <%= render @user %>
+            
+            <!--ユーザーステータス--> 
+            <p class="border-bottom">ユーザーリンク</p>
+            <%= render "users/user_status" %>
+        <% end %>
+        
+      </div>
+      
+      <div class="col-9 border-bottom">
+        <p  class="border-bottom">いいね一覧</p>
+        <% if @posts.any?  %>
+              <%= render  @posts %>
+              <%= paginate  @posts, window: 2 %>
+        <% else %>
+          <p>まだいいねをしてる記事がありません</p>
+        <% end %>
+
+      </div>
+  </div>
+</div>

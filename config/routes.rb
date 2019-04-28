@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
    # 企業ポリシーページ
   get 'static_pages/home'
   get 'static_pages/about'
@@ -24,7 +23,7 @@ Rails.application.routes.draw do
   # resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :posts
   resources :comments,            only: [:show, :create, :destroy]
-  # resources :likes,               only: [ :show, :create, :destroy]
+  resources :likes,               only: [ :show, :create, :destroy]
 end
 
 
@@ -59,9 +58,14 @@ end
 # rails g model Comment content:string user:references post:references
 # rails g controller Comments new 
 
-# Viewの修正
+# ここから！！！！！！
+# いいね機能作成
+# rails g model Like  user:references post:references
+# rails g controller Likes show
 
-# Like作成
+# password_resetの作成
+# rails g controller PasswordResets new edit 
+# rails g migration add_reset_to_users reset_digest:string reset_sent_at:datetime
 
 
 # (まとめ記事、撮り鉄スポット)ポスト

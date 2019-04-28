@@ -10,6 +10,8 @@
     <div class="col-9 border-bottom">
                 
           <p  class="border-bottom">投稿画像</p>
+          
+          <!--タイトル-->
           <h3><b><%= @post.title %></b></h3>
           
           <!--画像-->
@@ -44,6 +46,9 @@
       <div class="col-3 ">
         <p class="border-bottom">画像詳細</p>
         
+        
+        <h3 class="text-white"><b><%= @post.title %></b></h3>
+        
         <!--ユーザープロフィール-->
         <% @user = @post.user %>
         <%= render @user %>
@@ -61,8 +66,8 @@
   
   
   <!--その他人気の写真-->
-  <div class="mt-5">
-    <p><spna class="">その他人気の画像</spna></p>
+  <div class="mt-5 mb-5">
+    <p><spna class=""><b><%= @post.user.name %>さん</b>のその他人気の画像</spna></p>
     <% 8.times do %>
       <%= render @post %>
     <% end %>

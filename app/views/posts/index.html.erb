@@ -10,7 +10,7 @@
 
 <div class="row"> 
     <div class="col-2 ">
-      <p class="border-bottom">最新の記事</p>
+      <p class="border-bottom">人気の写真</p>
       
       <% if @user %>
           <!--ユーザープロフィール-->
@@ -20,6 +20,11 @@
           <p class="border-bottom">ユーザーリンク</p>
           <%= render "users/user_status" %>
       <% end %>
+      
+      <div>
+        <p>人気の写真5個まで</p>
+            <%= render @posts %>
+      </div>
       
     </div>
     
