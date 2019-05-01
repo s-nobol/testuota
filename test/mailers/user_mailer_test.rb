@@ -11,8 +11,8 @@ class UserMailerTest < ActionMailer::TestCase
     @post = posts(:first_post)
     @comment = @user.comments.create(content: content ,post: @post )
     mail = UserMailer.comment(@comment)
-    assert_equal "Comment", mail.subject
-    assert_equal ["to@example.org"], mail.to
+    assert_equal "User Comment", mail.subject
+    assert_equal [@post.user.email], mail.to
     assert_equal ["tetsuotasokuho.com"], mail.from
     assert_match content , mail.body.encoded
   end

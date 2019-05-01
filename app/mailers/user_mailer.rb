@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
     @post = Post.find(@comment.post_id)
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: @post.user.email, subject: "User Comment"
   end
   
 end
