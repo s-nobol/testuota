@@ -9,10 +9,10 @@
   
   <div>
     <!--@user.likes.count-->
-    <%= link_to "お気に入り", like_path(@user), class:"text-danger" %></br>
+    <%= link_to "お気に入り #{@user.likes.count }", like_path(@user), class:"text-danger" %></br>
     
     <!--@user.count.count-->
-    <%= link_to "コメント #{@user.posts.count }", comment_path(@user) , class:"text-success" %></br>
+    <%= link_to "コメント #{@user.comments.count }", comment_path(@user) , class:"text-success" %></br>
     
     <%= link_to "メッセージ", "#", class:"text-dark" %></br>
     

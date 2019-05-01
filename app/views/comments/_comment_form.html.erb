@@ -1,5 +1,5 @@
 <div class="bg-white p-3" >
-   <%= form_for(Comment.new) do |f| %>
+   <%= form_for(@comment) do |f| %>
         <%= hidden_field_tag :post_id, @post.id %>
         
         <!--エラーメッセージ-->

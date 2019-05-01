@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
    # 企業ポリシーページ
   get 'static_pages/home'
   get 'static_pages/about'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users 
-  # resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :posts
   resources :comments,            only: [:show, :create, :destroy]
   resources :likes,               only: [ :show, :create, :destroy]
@@ -58,14 +59,28 @@ end
 # rails g model Comment content:string user:references post:references
 # rails g controller Comments new 
 
-# ここから！！！！！！
 # いいね機能作成
 # rails g model Like  user:references post:references
 # rails g controller Likes show
 
 # password_resetの作成
-# rails g controller PasswordResets new edit 
+# rails g controller PasswordResets new edit --no-test-framework
 # rails g migration add_reset_to_users reset_digest:string reset_sent_at:datetime
+
+# メーラー作成
+# rails g mailer UserMailer comment password_reset
+
+
+# ここから！！！！！！(like_seedさくせいするのわすれてた　ここで作成)
+# sendgridのアカウント復旧メール送信
+# アカウント復旧後、へろくにデプロイする
+
+# comment_mailer作成
+# コメント記入後相手にメールを送信できるようにする
+
+# 画像アップロード作成(user, post)
+
+# adminユーザー作成
 
 
 # (まとめ記事、撮り鉄スポット)ポスト

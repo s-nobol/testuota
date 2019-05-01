@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     else
       @user = @post.user
       @comments = @post.comments.page(params[:page]).per(10)
-      flash[:danger] = "投稿できません"
+      flash[:danger] = "投稿できません コメントの内容を正しく入力してください"
       render "posts/show"
     end
   end

@@ -29,7 +29,7 @@ class LikesController < ApplicationController
   def show
     @user = User.find(params[:id])
     likes_ids = @user.likes.map(&:post_id) 
-    @posts = Post.where("id IN (?)", likes_ids).page(params[:page]).per(6)
+    @posts = Post.where("id IN (?)", likes_ids).page(params[:page]).per(15)
   end
   
   private 

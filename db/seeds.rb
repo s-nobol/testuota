@@ -19,6 +19,7 @@ end
 
 users = User.order(:created_at).take(6)
 
+
 15.times do |n|
   title = "Test#{n}"
   content = "これはテスト記事です　カウント#{n}回"
@@ -33,14 +34,20 @@ end
 # following.each { |followed| user.follow(followed) }
 # followers.each { |follower| follower.follow(user) }
 
+# ログインユーザー　コメント、いいね追加
+first_user = User.first
+posts = Post.all.take(15)
+posts.each do |post|
+  first_user.comments.create!(content: "こんにちは　これはFirst_userによるテストコメントです", post: post)
+  first_user.likes.create!(post: post)
+end
 
-# コメント（5個）
-
+#　その他ユーザー　 コメント、いいね追加
+users = User.all[1..6]
 5.times do |n|
   posts = Post.all.take(5-n)
   posts.each do |post|
       users[n].comments.create!(content: "テストコメント#{n}", post: post)
-      # users[n].likes.create!(post: post)
+      users[n].likes.create!(post: post)
   end
 end
-  
