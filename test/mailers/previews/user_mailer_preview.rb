@@ -3,7 +3,8 @@ class UserMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/comment
   def comment
-    UserMailer.comment
+    comment = Comment.first
+    UserMailer.comment(comment)
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/password_reset

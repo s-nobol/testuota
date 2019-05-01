@@ -1,5 +1,39 @@
-<h1>User#comment</h1>
+<div class="main">
+  <h2>おめでとうございます!!</h2>
+  <div >
+    <b><%= @comment.user.name  %>さん</b>があなたの投稿<b><%= @post.title %></b>にコメントしました</br>
+    <div class="comment">
+      <%= @comment.content %>
+    </div>
+  </div>
+  <div class="url-btn">
+    <div><b><%= link_to "コメントを確認する" , post_url(@post), class:"btn"  %></b></div>
+  </div>
+</div>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/comment.html.erb
-</p>
+<style>
+
+    .main{
+      margin: auto;
+      width: 80%;
+      /*text-align: center;*/
+    }
+    .comment{
+      width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .url-btn{
+      margin-top: 20px;
+    }
+    
+    .btn{
+      text-decoration: none;
+      color:white;
+      background-color: black;
+      padding: 10px 20px; 
+    }
+
+</style>

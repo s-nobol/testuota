@@ -7,7 +7,9 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: "Password reset"
   end
   
-  def comment
+  def comment(comment)
+    @comment = comment
+    @post = Post.find(@comment.post_id)
     @greeting = "Hi"
 
     mail to: "to@example.org"

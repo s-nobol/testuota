@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     
     if @comment.save
       flash[:success] = "コメント投稿しました"
+      send_comment_mailer(@comment)
       redirect_to post_path(@post)
     else
       @user = @post.user
@@ -46,4 +47,15 @@ class CommentsController < ApplicationController
        # 正しいユーザーかどうか確認
     def comment_correct_user
     end
+    
+    def send_comment_mailer(comment)
+      
+      # @postユーザーのメール設定がTrueならメール送信
+      if @post.user != current_user 
+        if @post.user.notice_email.present?
+          UserMailer.comment(comment).deliver_now
+        end
+      end
+    end
+    
 end

@@ -1,3 +1,4 @@
-User#comment
-
-<%= @greeting %>, find me in app/views/user_mailer/comment.text.erb
+おめでとうございます
+<%= @comment.user.name  %>さんがあなたの投稿<%= @post.title %>にコメントしました
+コメントを確認する
+<%= post_url(@post.id) %>

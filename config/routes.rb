@@ -71,17 +71,17 @@ end
 # rails g mailer UserMailer comment password_reset
 
 
-# ここから！！！！！！(like_seedさくせいするのわすれてた　ここで作成)
-# sendgridのアカウント復旧メール送信
-# アカウント復旧後、へろくにデプロイする
-
+# ここから！！！！！！
 # comment_mailer作成
 # コメント記入後相手にメールを送信できるようにする
 
+
 # 画像アップロード作成(user, post)
 
-# adminユーザー作成
 
+
+# adminユーザー作成
+# rails g migration add_admin_to_users admin:string
 
 # (まとめ記事、撮り鉄スポット)ポスト
 # rails g model Eventpost content:text image:string
