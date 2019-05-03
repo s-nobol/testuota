@@ -4,7 +4,7 @@
       
         <!--// 画像があるときは画像を表示する-->
           <% if user.image.present? %>
-            <%= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon") %>
+            <%= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon" , width:"130" ,height:"130") %>
           <% else %>
             <%= image_tag("user_image.jpg" , class:"image_form rounded-circle" ,id:"icon", width:"130" ,height:"130") %>
           <% end %>

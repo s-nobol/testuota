@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  
+  mount_uploader :image, ImageUploader
   attr_accessor :cookies_token, :reset_token
   
   validates :name, presence: true, length: { maximum: 50 }
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :message, length: { maximum: 256 }
-  
+  validate  :image_size
   
   
   # 渡された文字列のハッシュ値を返す
@@ -56,4 +56,13 @@ class User < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
+  
+  private
+
+    # アップロードされた画像のサイズをバリデーションする
+    def image_size
+      if image.size > 5.megabytes
+        errors.add(:image, "画像サイズが大きすぎます5MB以下にして下さい")
+      end
+    end
 end

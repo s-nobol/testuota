@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update, :user_image]
+  before_action :no_image, only: [:user_image]
   
   
   def index
@@ -47,6 +48,15 @@ class UsersController < ApplicationController
     end
   end
   
+  def user_image
+    if @user.update_attributes(image_params)
+      flash[:success] = "ユーザー情報を更新しました"
+      redirect_to @user 
+    else
+      render "edit"
+    end
+  end
+  
   private
 
     def user_params
@@ -57,9 +67,21 @@ class UsersController < ApplicationController
       params.require(:user).permit(:message, :address, :gender ,:birthday, :notice_email, :notice_message)
     end
     
+    def image_params
+      params.require(:user).permit(:image)
+    end
+    
        # 正しいユーザーかどうか確認
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user
+    end
+    
+    # 画像ファイルがないとき
+    def no_image
+      unless params[:user]
+        flash[:danger] = "画像ファイルが挿入されていません"
+        render "edit"
+      end
     end
 end

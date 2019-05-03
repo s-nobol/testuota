@@ -27,12 +27,12 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_path
   end
   
-  # 別のユーザーが削除することはできない
-  test "destroy no post user" do
-    
-    # first_userでsecond_userが作ったPostを削除する
-    # first_userはsecond_postの制作者でないので削除できない
-    log_in_as(@user)
+  
+  
+  test "comment destroy no comment user" do
+    # @other_userはログインユーザーでないので削除できない
+    other_user = users(:second_user)
+    log_in_as(other_user)
     assert_no_difference "Comment.count" do
       delete comment_path(@comment)
     end
@@ -40,4 +40,16 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_path(@comment.post)
   end
   
+  
+  # 別のユーザーが削除することはできない
+  test "comment destroy no post user" do
+   
+    # @userはログインユーザーなので削除できる
+    log_in_as(@user)
+    assert_difference "Comment.count", -1 do
+      delete comment_path(@comment)
+    end
+    assert_not flash.empty? ,"flash = #{flash[:danger]} comment_user #{@comment.user}"
+    assert_redirected_to post_path(@comment.post)
+  end
 end

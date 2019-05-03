@@ -1,5 +1,5 @@
 <!--ユーザーコメント-->
-<div class="media bg-white p-2 mb-1">
+<div class="media bg-white p-2 mb-3">
     
     <!--ユーザー画像-->
     <% if comment.user.image.present? %>
@@ -8,7 +8,7 @@
         <%= image_tag("user_image.jpg", class:"rounded-circle", width:"40" ,height:"40") %>
     <% end %>
       
-    <div class="media-body ml-2">
+    <div class="media-body ml-2 ">
       <h6 class="mt-0" > 
       
         <!--ユーザー名-->
@@ -18,11 +18,11 @@
         <%= "comment.id : #{comment.id}  post_id #{comment.post.id}" %>
         
         <!--削除ボタン-->
-        <% if @post %>
-            <% if @post.user == current_user %>
-                <%= link_to "削除", comment_path(comment) ,method: :delete , class:"float-right" %>
-            <% end %>
+        <% if comment_destroy(comment) %>
+            <%= link_to "削除", comment_path(comment), method: :delete, class:"text-danger"%>
         <% end %>
+        
+        
         
       </h6>
       

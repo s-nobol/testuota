@@ -13,6 +13,7 @@
 
   <div class="row"> 
       <div class="col-2 ">
+      
         <p class="border-bottom">人気の記事</p>
         
         <div class="bg-light">
@@ -20,35 +21,60 @@
             <%= render "static_pages/feed" %>
           <% end %>
         </div>
-        
-        
         
       </div>
       
       <div class="col-7 border-bottom">
+      
+        <!--最新の記事-->
         <p  class="border-bottom">最新の記事</p>
-        
-        
-        <!--記事の作成数-->
-        
         <% if !@posts.nil? %>
             <%= render @posts %>
             <%= paginate  @posts, window: 2 %>
         <% else %>
-        
-        
         <% end %>
       </div>
       
-      <div class="col-3 pr-5 pl-5">
+      <div class="col-3 pr-3 pl-3">
+      
+        <!--管理人プロフィール-->
+        <div class="bg-black text-white p-1">管理人</div>
+      　<div class= "p-0">
+        　<span class="text-center">管理人⇒あいち
+          修行中⇒Python
+          ひとこと⇒こんばんは！修行してます。
+          なかよくしてもらいたいです。
+          
+          つぶやき
+          
+          お魚になりたい
+        　</span>
+      　</div>
+      　
+        <!--記事の検索    -->
+      　<div class= "">
+        　<div class="bg-black text-white p-1">記事の検索</div>
+        　 <input type="text" class="w-100 mt-1"/>
+      　</div>
+        　
+        <!--人気記事一覧　-->
         <p class="border-bottom">人気の記事</p>
-        
         <div class="bg-light">
-          <% 10.times do %>
+          <% 5.times do %>
             <%= render "static_pages/feed" %>
           <% end %>
         </div>
         
+        <!--カテゴリー-->
+        <div>
+          <%= render "static_pages/categorys"%>
+      　</div>
+      　
+      　<!--アーカイブ-->
+      　<div>
+          <%= render "static_pages/archives"%>
+      　</div>
+      　
       </div>
   </div>
 </div>

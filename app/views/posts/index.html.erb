@@ -9,28 +9,28 @@
 <p>Find me in app/views/posts/index.html.erb</p>
 
 <div class="row"> 
-    <div class="col-2 ">
-      <p class="border-bottom">人気の写真</p>
+    <!--<div class="col-2 ">-->
+    <!--  <p class="border-bottom">人気の写真</p>-->
       
-      <% if @user %>
+    <!--  <% if @user %>-->
           <!--ユーザープロフィール-->
-          <%= render @user %>
+    <!--      <%= render @user %>-->
           
           <!--ユーザーステータス--> 
-          <p class="border-bottom">ユーザーリンク</p>
-          <%= render "users/user_status" %>
-      <% end %>
+    <!--      <p class="border-bottom">ユーザーリンク</p>-->
+    <!--      <%= render "users/user_status" %>-->
+    <!--  <% end %>-->
       
-      <div>
-        <p>人気の写真5個まで</p>
-            <%= render @posts %>
-      </div>
+      <!--<div>-->
+            <%#= render @posts %>
+      <!--</div>-->
       
-    </div>
+    <!--</div>-->
     
-    <div class="col-9 border-bottom">
+    <!--写真一覧ページのみ写真の表示を大きくしたい-->
+    <!--なのでべつにrender入れなくてもいいかも-->
+    <div class="col-9 border-bottom m-auto">
       <p  class="border-bottom">写真一覧</p>
-      
       <%= render @posts %>
       <%= paginate  @posts, window: 2 %>
     </div>

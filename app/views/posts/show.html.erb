@@ -11,21 +11,45 @@
                 
           <p  class="border-bottom">投稿画像</p>
           
-          <!--タイトル-->
-          <h3><b><%= @post.title %></b></h3>
+          <nav class="navbar navbar-light pr-5">
           
+            <!--タイトル-->
+            <h3><b><%= @post.title %></b></h3>
+            
+            <% if post_user(@post) %>
+              <ul class="nav justify-content-end ">
+              
+                <!--編集ボタン-->
+                <li class="nav-item mr-2">
+                  <%= link_to "編集", edit_post_path(@post), class:"btn btn-outline-success"%>
+                </li>
+                
+                <!--削除ボタン-->
+                <li class="nav-item ">
+                  <%= link_to "削除",  post_path(@post), method: :delete, class:"btn btn-outline-danger"%>
+                </li>
+                
+              </ul> 
+            <% end %>
+          </nav>
           <!--画像-->
-           <div class="">
-            <%= image_tag("top_image.jpg", class:"img-fluid" )%>
+          <div class="pr-5 pb-1 pl-5">
+            <% if @post.picture.present? %>
+              <%= image_tag(@post.picture.url , class:"img-fluid ") %>
+            <% else %>
+              <%= image_tag("no_image.jpg", class:"img-fluid ")%>
+            <% end %>
           </div>
           
+          
+          
           <!--テキスト-->
-          <div class="p-3 mb-3">
+          <div class="p-3 mb-3 ml-5">
               <span><%= @post.content %></span>
           </div>
           
           <!--コメント-->
-          <div class="p-3">
+          <div class="p-3 ml-5">
           <p  class=" border-bottom text-dark">みんなのコメント</p>
             <% if !@comments.nil?  %>
                   <%= render  @comments %>
@@ -37,10 +61,8 @@
             <!--他の写真-->
             <!--<p  class="bg-black text-white p-2"><%#= @post.user.name %>さんの他の写真</p>-->
           </div>
-            
           
           
-        
       </div>
   
       <div class="col-3 ">
@@ -60,6 +82,7 @@
         <!--ポストステータス-->
         <p class="border-bottom">ポストステータス</p>
         <%= render "posts/post_status" %>
+        
         
       </div>
   </div>

@@ -1,14 +1,33 @@
 <div class=" p-1">
-  <div class=" border-black">
+  <div class=" border-black" id="event_image">
     <!--// 画像があるときは画像を表示する-->
+    <small class="s-text"><b>コメント15</b></small>
     <%# if user.image.present? %>
       <%#= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon") %>
     <%# else %>
-      <%= image_tag("user_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"80") %>
+      <%= image_tag("no_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"80") %>
     <%# end %>
     
     <div class="bg-black">
-      <small class="text-white">これはテスト記事</small>
+      <small class="text-white"><b>これはテスト記事</b></small>
     </div>
   </div>
 </div>
+
+<style>
+#event_image {/*親div*/
+  position: relative;/*相対配置*/
+  }
+
+#event_image .s-text {
+  position: absolute;/*絶対配置*/
+  color: white;/*文字は白に*/
+  background-color: black;
+  top: 0;
+  right: 0;
+  }
+
+#event_image img {
+  width: 100%;
+  }
+</style>

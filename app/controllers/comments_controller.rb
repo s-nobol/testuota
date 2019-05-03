@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     flash[:danger] = "コメント削除しました"
-    redirect_to post_path(@post)
+    redirect_to post_path(@comment.post)
   end
   
   def show
@@ -37,10 +37,9 @@ class CommentsController < ApplicationController
     
     def no_post_user
       @comment = Comment.find(params[:id])
-      @post = @comment.post
-      unless @post.user == current_user
+      unless comment_destroy(@comment)
         flash[:danger] = "削除できません"
-        redirect_to post_path(@post)
+        redirect_to post_path(@comment.post)
       end
     end
     

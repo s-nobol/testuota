@@ -33,7 +33,26 @@ module SessionsHelper
     cookies.delete(:token)
   end
   
+  # ポストの作成写真がログインユーザーか？
+  def post_user(post)
+    if post.user == current_user
+      post
+    end
+  end
   
+   # もしコメントユーザーとログインユーザーが違うと削除できない
+  def comment_destroy(comment)
+    if comment.user == current_user #|| current_user.admin?
+      comment
+    end
+  end
+  
+  # 記憶したURL (もしくはデフォルト値) にリダイレクト
+  # def redirect_back_or(default)
+  #   redirect_to(session[:url] || default)
+  #   session.delete(:url)
+  # end
+
   # アクセスしようとしたURLを覚えておく
   # def store_location
   #   session[:url] = request.original_url if request.get?

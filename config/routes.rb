@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   
+  # ユーザー画像設定
+  post 'update_image', to: 'users#user_image'
+  
+  # ホーム
   root "static_pages#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users 
@@ -67,22 +71,28 @@ end
 # rails g controller PasswordResets new edit --no-test-framework
 # rails g migration add_reset_to_users reset_digest:string reset_sent_at:datetime
 
-# メーラー作成
+# password_reset_mailer comment_mailer 作成
 # rails g mailer UserMailer comment password_reset
 
+# 画像アップロード作成(user, post)
+# rails generate uploader Picture
 
 # ここから！！！！！！
-# comment_mailer作成
-# コメント記入後相手にメールを送信できるようにする
+# rails generate uploader Image
 
-
-# 画像アップロード作成(user, post)
-
-
+# 全体のView修正(削除、編集ボタンなど追加)
 
 # adminユーザー作成
 # rails g migration add_admin_to_users admin:string
 
-# (まとめ記事、撮り鉄スポット)ポスト
-# rails g model Eventpost content:text image:string
-# rails g model Locationpost content:text image:string
+# まとめ記事モデル
+# rails g model Eventpost title:string content:text image:string
+# rails g controller Eventposts new show edit archive
+
+# コメントモデル(まとめ記事)
+# rails g model Eventcomment content:string
+# rails g controller Eventcomments
+
+# 撮り鉄スポットポスト(作成しなくてもいい)
+# rails g model Locationpost title:string content:text image:string
+# rails g controller Locationposts new show edit index

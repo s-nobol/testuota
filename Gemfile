@@ -31,8 +31,8 @@ gem 'bcrypt'
 gem 'kaminari'
 
 # # 画像アップロード
-# gem 'carrierwave',             '1.2.2'
-# gem 'mini_magick',             '4.7.0'
+gem 'carrierwave',             '1.2.2'
+gem 'mini_magick',             '4.7.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -71,6 +71,7 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog', '1.42'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
