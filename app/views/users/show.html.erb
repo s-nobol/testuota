@@ -9,6 +9,12 @@
 
   <h1>Users#show</h1>
   <p>Find me in app/views/users/show.html.erb</p>
+  <div>
+     <% if @user.admin? %>
+       <p class="text-danger">管理者ユーザーです</p>
+     <% end %>
+  </div>
+  
 
   <div class="row"> 
       <div class="col-3 ">
@@ -36,7 +42,6 @@
             <%= paginate  @posts, window: 2 %>
         <% else %>
         
-        
         <% end %>
       </div>
       
@@ -45,12 +50,11 @@
       <div class="col-2 border-bottom">
         <p  class="border-bottom">人気の記事</p>
         
-        
         <!--記事の作成数-->
-        
         <%# 10.times do %>
           <%#= render "static_pages/feed" %>
         <%# end %>
+        
       </div>
   </div>
 </div>

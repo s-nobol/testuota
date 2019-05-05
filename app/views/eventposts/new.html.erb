@@ -1,0 +1,43 @@
+<!--トップ画-->
+<%= render "layouts/top_image"%>
+
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
+
+<!--<div class="container">-->
+
+  <h1>Eventposts#new</h1>
+  <p>Find me in app/views/eventposts/new.html.erb</p>
+  
+  <div class="row p-2"> 
+      <div class="col-6 ">
+   
+      </div>
+      
+      <div class="col-6 border-bottom">
+        <p  class="border-bottom">投稿新規作成</p>
+        
+          <!--投稿フォーム-->
+          <%= render "eventposts/eventpost_form" %>
+      </div>
+  </div>
+
+<!--</div>-->
+
+
+<script>
+$(function() {
+
+	$("#preview").click(function() {
+		// 値を設定
+		var text = $("#sub_title").val();
+		var content = $("#content").val();
+
+		// alert(text)
+		$("#form-sub_title").html(sub_title)
+		$("#form-sub_title").html(content)
+
+	});
+
+});
+</script>

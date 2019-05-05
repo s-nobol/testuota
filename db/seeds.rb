@@ -8,6 +8,7 @@
 User.create(name: "123", 
             email: "123@example.com",
             password: "123123",
+            admin: true
              )
 
 15.times do |n|

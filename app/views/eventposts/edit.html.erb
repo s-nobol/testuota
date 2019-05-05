@@ -1,0 +1,66 @@
+
+<!--トップ画-->
+<%= render "layouts/top_image"%>
+
+<!--メインバー-->
+<%= render "layouts/main_bar"%>
+
+<!--<div class="container">-->
+
+
+<div class="text-center">
+  <div class="m-auto">
+    <%# @user = current_user %>
+    <%#= render @user %>
+     <h1>Eventposts#edit</h1>
+  <p>Find me in app/views/eventposts/edit.html.erb</p>
+
+  </div>
+</div>
+ 
+  <div class="row p-5"> 
+      <div class="col-6 ">
+      
+        <h3 class="border-bottom"><b>プレビュー</b></h3>
+        <!--タイトル-->
+        <div class="bg-black text-white "  >
+          <h5 class=""><b id="form-title"></b></h5>
+        </div>
+        
+        <!--サブタイトル-->
+        <div id="form-sub_title"> 
+        </div>   
+        
+        <!--コンテンツ-->
+        <div id="form-content">
+        </div>
+      </div>
+      
+      <div class="col-6 ">
+          <!--投稿フォーム-->
+          <h3 class="border-bottom" ><b>記事作成</b></h3>
+          <%= render "eventposts/eventpost_form" %>
+      </div>
+  </div>
+
+<!--</div>-->
+
+
+<script>
+$(function() {
+
+	$("#preview").click(function() {
+		// 値を設定
+		var title = $("#title").val();
+		var sub_title = $("#sub_title").val();
+		var content = $("#content").val();
+
+		// alert(text)
+		$("#form-title").html(title);
+		$("#form-sub_title").html(sub_title);
+		$("#form-content").html(content).fadeIn();
+
+	});
+
+});
+</script>

@@ -1,13 +1,14 @@
 <div class=" bg-white p-2 border"> 
+
   <!--画像-->
     <div class="image_form rounded-circle text-center mx-auto mt-4" id="img_field" >
       
-        <!--// 画像があるときは画像を表示する-->
-          <% if user.image.present? %>
-            <%= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon" , width:"130" ,height:"130") %>
-          <% else %>
-            <%= image_tag("user_image.jpg" , class:"image_form rounded-circle" ,id:"icon", width:"130" ,height:"130") %>
-          <% end %>
+        <!-- 画像があるときは画像を表示する-->
+        <% if user.image.present? %>
+          <%= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon" , width:"130" ,height:"130") %>
+        <% else %>
+          <%= image_tag("user_image.jpg" , class:"image_form rounded-circle" ,id:"icon", width:"130" ,height:"130") %>
+        <% end %>
     </div>
   
   <!--ユーザー名-->
@@ -27,6 +28,13 @@
   <div>
     <%= link_to "ユーザー編集", edit_user_path(@user) ,class:"" %>
   </div>
+  
+  <% if user.admin? %>
+  <div>
+      <%= link_to "まとめ記事作成", new_eventpost_path ,class:"" %>
+
+  </div>
+  <% end %>
 </div>
 
 

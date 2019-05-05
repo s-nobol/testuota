@@ -6,17 +6,17 @@
 <%= render "layouts/main_bar"%>
 
 
-<div class="container">
+<div class="container ">
 
-  <h1>StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
-
+  <h1>Eventposts#show</h1>
+  <p>Find me in app/views/eventposts/show.html.erb</p>
+  
   <div class="row"> 
       <div class="col-2 ">
       
         <p class="border-bottom">人気の記事</p>
         
-        <div class="bg-light">
+        <div class="bg-light ">
           <% 10.times do %>
             <%= render "static_pages/feed" %>
           <% end %>
@@ -26,14 +26,15 @@
       
       <div class="col-7 border-bottom">
       
-        <!--最新の記事-->
+        <!--記事表示-->
         <p  class="border-bottom">最新の記事</p>
-        
-        <% if @eventposts.any? %>
-        　<%= render @eventposts %>
-        <% else %>
-          <p><b>まだ記事がありません</b></p>
-      　<% end %>
+      　<%#= render @eventpost %>
+      　
+      　<!--タイトル-->
+      　<%= render @eventpost %>
+      　
+      　<!--メイン-->
+      　<%= @eventpost.content.html_safe %>
       　
       </div>
       
@@ -60,7 +61,7 @@
       　</div>
         　
         <!--人気記事一覧　-->
-        <p class="bg-black text-white p-1">人気の記事</p>
+        <p class="border-bottom">人気の記事</p>
         <div class="bg-light">
           <% 5.times do %>
             <%= render "static_pages/feed" %>
@@ -80,4 +81,3 @@
       </div>
   </div>
 </div>
-

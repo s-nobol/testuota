@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments,            only: [:show, :create, :destroy]
   resources :likes,               only: [ :show, :create, :destroy]
+  resources :eventposts
 end
 
 
@@ -76,22 +77,27 @@ end
 
 # 画像アップロード作成(user, post)
 # rails generate uploader Picture
-
-# ここから！！！！！！
 # rails generate uploader Image
 
-# 全体のView修正(削除、編集ボタンなど追加)
+# 管理者ユーザー作成
+# rails g migration add_admin_to_users admin:boolean
 
-# adminユーザー作成
-# rails g migration add_admin_to_users admin:string
+# まとめ記事モデル(ちゃんと考えて作成する)
+# rails g model Eventpost title:string sub_title:text content:text image:string category_id:integer user:references
+# rails g controller Eventposts new show edit index
 
-# まとめ記事モデル
-# rails g model Eventpost title:string content:text image:string
-# rails g controller Eventposts new show edit archive
+# ここから！！！！！！
+# Eventposts テスト
+
+# カテゴリー作成
+# rails g model Category name:string 
+
 
 # コメントモデル(まとめ記事)
-# rails g model Eventcomment content:string
+# rails g model Eventcomment content:string user_id:integer
 # rails g controller Eventcomments
+
+# 全体のView修正()
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string

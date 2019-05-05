@@ -29,8 +29,8 @@
     
     <!--写真一覧ページのみ写真の表示を大きくしたい-->
     <!--なのでべつにrender入れなくてもいいかも-->
-    <div class="col-9 border-bottom m-auto">
-      <p  class="border-bottom">写真一覧</p>
+    <div class="col-12 border-bottom m-auto">
+      <p  class="border-bottom"></p>
       <%= render @posts %>
       <%= paginate  @posts, window: 2 %>
     </div>

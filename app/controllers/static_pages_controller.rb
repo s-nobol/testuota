@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
+  
   def home
+    # 後日修正
+    @eventposts = Eventpost.all
   end
 
   def about

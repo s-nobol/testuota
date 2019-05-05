@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_181555) do
+ActiveRecord::Schema.define(version: 2019_05_04_133833) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 2019_04_28_181555) do
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id", "post_id", "created_at"], name: "index_comments_on_user_id_and_post_id_and_created_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "eventposts", force: :cascade do |t|
+    t.string "title"
+    t.text "sub_title"
+    t.text "content"
+    t.string "image"
+    t.integer "category_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "category_id", "created_at"], name: "index_eventposts_on_user_id_and_category_id_and_created_at"
+    t.index ["user_id"], name: "index_eventposts_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -62,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_181555) do
     t.boolean "notice_message", default: true
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.boolean "admin", default: false
   end
 
 end

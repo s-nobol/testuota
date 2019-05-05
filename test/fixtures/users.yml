@@ -14,6 +14,7 @@ first_user:
   name: First_user
   email: First_user@test.com
   password_digest: <%= User.digest('password') %>
+  admin: true
   
 second_user:
   name: second_user

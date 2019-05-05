@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+eventpost:
+  title: MyString
+  sub_title: MyText
+  content: MyText
+  image: MyString
+  category_id: 1
+  user: first_user
+
+# two:
+#   title: MyString
+#   sub_title: MyText
+#   content: MyText
+#   image: MyString
+#   category_id: 1
+#   user: two
