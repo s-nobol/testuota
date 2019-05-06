@@ -1,0 +1,35 @@
+
+<div class="bg-black text-white p-1">カテゴリー</div>
+
+<% if @categorys %>
+  <ul class="list-group list-group-flush text-primary">
+    <% @categorys.each do |category| %>
+      <!--<li class="list-group-item p-1">li</li> -->
+      <%= link_to "#{category.name }(#{category.eventposts.count})", category, class:"list-group-item p-1" %>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<!--<ul class="list-group list-group-flush text-primary">-->
+<!--  <li class="list-group-item p-1">写真部/うｐ (332)</li>-->
+<!--  <li class="list-group-item p-1">旅行/風景写真 (95)</li>-->
+<!--  <li class="list-group-item p-1">動物写真 (63)</li>-->
+<!--  <li class="list-group-item p-1">評価/アドバイス (53)</li>-->
+<!--  <li class="list-group-item p-1">相談/質問 (369)</li>  -->
+<!--  <li class="list-group-item p-1">カメラマン/写真家 (2)</li>-->
+<!--  <li class="list-group-item p-1">機材 (34)</li>-->
+<!--  <li class="list-group-item p-1">買い物/衝動買い (10)</li>-->
+<!--  <li class="list-group-item p-1">コンデジ写真 (2)</li>-->
+<!--  <li class="list-group-item p-1">スマホ写真/カメラ (122)</li>  -->
+<!--  <li class="list-group-item p-1">ドローン/動画 (3)</li>-->
+<!--  <li class="list-group-item p-1">フィルムカメラ (31)</li>-->
+<!--  <li class="list-group-item p-1">雑談/その他 (1205)</li>-->
+<!--  <li class="list-group-item p-1">Canon (45)</li>-->
+<!--  <li class="list-group-item p-1">CASIO (1)</li>-->
+<!--  <li class="list-group-item p-1">FUJIFILM (12)</li>-->
+<!--  <li class="list-group-item p-1">Leica (5)</li>-->
+<!--  <li class="list-group-item p-1">SIGMA (1)</li>-->
+<!--  <li class="list-group-item p-1">Sony (48)</li>-->
+<!--  <li class="list-group-item p-1">その他メーカー (3)</li>-->
+<!--</ul>-->

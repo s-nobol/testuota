@@ -65,11 +65,11 @@ class EventpostsController < ApplicationController
       params.require(:eventpost).permit(:title, :sub_title, :content, :category_id)
     end  
   
-    # 管理者ユーザーのみがパスできる
-    def admin_user
-      unless current_user.admin?
-        flash[:danger] = "実行権限がありません"
-        redirect_to root_path
-      end
-    end
+    # # 管理者ユーザーのみがパスできる
+    # def admin_user
+    #   unless current_user.admin?
+    #     flash[:danger] = "実行権限がありません"
+    #     redirect_to root_path
+    #   end
+    # end
 end

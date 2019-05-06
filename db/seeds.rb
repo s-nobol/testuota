@@ -5,12 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# adminユーザーの作成
 User.create(name: "123", 
             email: "123@example.com",
             password: "123123",
             admin: true
              )
-
+             
+# ユーザー作成
 15.times do |n|
   User.create(name: "#{n}_user", 
               email: "#user_#{n}@test.com",
@@ -20,20 +23,13 @@ end
 
 users = User.order(:created_at).take(6)
 
-
-15.times do |n|
+# postの作成
+10.times do |n|
   title = "Test#{n}"
   content = "これはテスト記事です　カウント#{n}回"
   users.each { |user| user.posts.create!(title: title, content: content) }
 end
 
-# フォロワーの作成
-# users = User.all
-# user  = users.first
-# following = users[2..10]
-# followers = users[3..10]
-# following.each { |followed| user.follow(followed) }
-# followers.each { |follower| follower.follow(user) }
 
 # ログインユーザー　コメント、いいね追加
 first_user = User.first
@@ -52,3 +48,18 @@ users = User.all[1..6]
       users[n].likes.create!(post: post)
   end
 end
+
+# カテゴリーの作成
+categorys = ["鉄道","廃線","旅","風景","ローカル鉄道"]
+categorys.each do |category_name|
+  Category.create!(name: category_name)
+end
+
+
+# フォロワーの作成
+# users = User.all
+# user  = users.first
+# following = users[2..10]
+# followers = users[3..10]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }

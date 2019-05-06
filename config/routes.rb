@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :comments,            only: [:show, :create, :destroy]
   resources :likes,               only: [ :show, :create, :destroy]
   resources :eventposts
+  resources :categorys, only: [:show, :new, :create, :destroy]
 end
 
 
@@ -86,18 +87,31 @@ end
 # rails g model Eventpost title:string sub_title:text content:text image:string category_id:integer user:references
 # rails g controller Eventposts new show edit index
 
-# ここから！！！！！！
-# Eventposts テスト
 
 # カテゴリー作成
 # rails g model Category name:string 
+# rails g controller Categorys
+# seed.rb // times.do  posts.createを15から10に変更した
 
 
-# コメントモデル(まとめ記事)
-# rails g model Eventcomment content:string user_id:integer
+# ここから！！！！！！
+# rails db:migrate /rails db:seed 
+# デプロイ
+
+# 検索 or アーカイブ
+# rails g controller Archive
+# rails g controller search (コントローラーいらないかも？　static_pagescontrollerに記入するか？)
+
+
+# コメントモデル(Event_post用)
+# rails g model Eventcomment content:string user_id:integer eventpost:references
 # rails g controller Eventcomments
 
+
 # 全体のView修正()
+
+
+
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string

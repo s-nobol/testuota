@@ -6,7 +6,8 @@
     
     <!--ポストステータス-->
     <div class="bg-light p-2">
-    　<span>コメント</span><span>シェア</span> 
+    　<span>コメント</span><span>シェア</span>
+    　<span>カテゴリ<%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-primary" %></span>
     　<%= link_to "編集", edit_eventpost_path(eventpost), class:"text-success" %>
     　<%= link_to "削除", eventpost_path(eventpost), method: :delete, class:"text-danger" %>
     </div>

@@ -1,4 +1,4 @@
-
+<!--このページはカテゴリをクリックしたときに表示される-->
 <!--トップ画-->
 <%= render "layouts/top_image"%>
 
@@ -8,8 +8,9 @@
 
 <div class="container">
 
-  <h1>StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
+  <h1>Category#show</h1>
+  <p>Find me in app/views/categorys/shoe.html.erb</p>
+  <h2>カテゴリー</h2>
 
   <div class="row"> 
       <div class="col-2 ">
@@ -31,6 +32,7 @@
         
         <% if @eventposts.any? %>
         　<%= render @eventposts %>
+        　<%= paginate @eventposts, window: 2 %>
         <% else %>
           <p><b>まだ記事がありません</b></p>
       　<% end %>
@@ -80,16 +82,3 @@
       </div>
   </div>
 </div>
-
-
-
-<!--ルートページと似たViewをもつページは-->
-<!--static_pages/home.html.erb -->
-<!--categorys/show.html.erb-->
-
-<!--今後増える予定のView-->
-<!--archive.html.erb-->
-<!--serch.html.erb-->
-
-<!--eventpostはコメントがはいるので違うページとする-->
-<!--eventposts/show.html.erb-->

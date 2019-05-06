@@ -1,7 +1,8 @@
 class Eventpost < ApplicationRecord
   
   belongs_to :user
-  
+  belongs_to :category
+
   validates :title, presence: true
   validates :sub_title, presence: true
   validates :content, presence: true
