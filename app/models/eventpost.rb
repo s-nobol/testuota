@@ -28,6 +28,16 @@ class Eventpost < ApplicationRecord
   # アーカイブ
   def self.archives
     # Railsでブログアプリに月別アーカイブを導入(参考)
-    Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+    if Rails.env.production?
+      Eventpost.group("YEAR(created_at)").group("MONTH(created_at)").count
+    else
+      
+      Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+    end
+    # Eventpost.group("date(created_at)").count
+    # => ["2019-05-07", 1]
+    
+    # Eventpost.group_by_month("created_at").count
+
   end
 end
