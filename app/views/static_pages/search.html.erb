@@ -32,8 +32,9 @@
         <% if @eventposts.any? %>
         　<%= render @eventposts %>
         　<%= paginate @eventposts, window: 2 %>
+
         <% else %>
-          <p><b>まだ記事がありません</b></p>
+          <p id ="search_post"><b>記事がありません</b></p>
       　<% end %>
       　
       </div>
@@ -80,16 +81,3 @@
       </div>
   </div>
 </div>
-
-
-
-<!--ルートページと似たViewをもつページは-->
-<!--static_pages/home.html.erb -->
-<!--categorys/show.html.erb-->
-
-<!--今後増える予定のView-->
-<!--archive.html.erb-->
-<!--search.html.erb-->
-
-<!--eventpostはコメントがはいるので違うページとする-->
-<!--eventposts/show.html.erb-->

@@ -8,8 +8,8 @@
 
 <div class="container">
 
-  <h1>StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
+  <h1>StaticPages#achive</h1>
+  <p>Find me in app/views/static_pages/archive.html.erb</p>
 
   <div class="row"> 
       <div class="col-2 ">
@@ -31,7 +31,6 @@
         
         <% if @eventposts.any? %>
         　<%= render @eventposts %>
-        　<%= paginate @eventposts, window: 2 %>
         <% else %>
           <p><b>まだ記事がありません</b></p>
       　<% end %>
@@ -80,16 +79,3 @@
       </div>
   </div>
 </div>
-
-
-
-<!--ルートページと似たViewをもつページは-->
-<!--static_pages/home.html.erb -->
-<!--categorys/show.html.erb-->
-
-<!--今後増える予定のView-->
-<!--archive.html.erb-->
-<!--search.html.erb-->
-
-<!--eventpostはコメントがはいるので違うページとする-->
-<!--eventposts/show.html.erb-->

@@ -9,6 +9,10 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 400 }
   validate  :picture_size
   
+  
+  
+
+  
   private
 
     # アップロードされた画像のサイズをバリデーションする

@@ -1,11 +1,11 @@
 
 <div class="bg-black text-white p-1">カテゴリー</div>
 
-<% if @categorys %>
+<%# if @categorys = Category.all %>
+<% if @categorys = Category.categorys %>
   <ul class="list-group list-group-flush text-primary">
-    <% @categorys.each do |category| %>
-      <!--<li class="list-group-item p-1">li</li> -->
-      <%= link_to "#{category.name }(#{category.eventposts.count})", category, class:"list-group-item p-1" %>
+    <% @categorys.each do |category, count| %>
+      <%= link_to "#{category[1] }(#{count})", category_path(category[0]) , class:"list-group-item p-1" %>
     <% end %>
   </ul>
 <% end %>

@@ -1,18 +1,21 @@
+
+<% if @archives = Eventpost.archives %>
+  <div class="bg-black text-white p-1">アーカイブ</div>
+  <ul class="list-group list-group-flush text-primary">
+       <% @archives.each do |yyyymm, count| %>  
+             <%= link_to ymconv(yyyymm, count.to_s), archive_path(yyyymm), class:"list-group-item p-1" %>
+       <% end %>
+  </ul>     
+<% end %>
+
+
 <div class="bg-black text-white p-1">アーカイブ</div>
 <ul class="list-group list-group-flush text-primary">
   <li class="list-group-item p-1">2019年05月</li>
   <li class="list-group-item p-1">2019年04月</li>
-  <li class="list-group-item p-1">2019年03月</li>
-  <li class="list-group-item p-1">2019年02月</li>
-  <li class="list-group-item p-1">2019年01月</li>
-  <li class="list-group-item p-1">2018年12月</li>
-  <li class="list-group-item p-1">2018年11月</li>
-  <li class="list-group-item p-1">2018年10月</li>
   <li class="list-group-item p-1">2018年09月</li>
   <li class="list-group-item p-1">2018年08月</li>
   <li class="list-group-item p-1">2018年07月</li>
-  <li class="list-group-item p-1">2018年06月</li>
-  <li class="list-group-item p-1">2018年05月</li>
   <li class="list-group-item p-1">2018年04月</li>
   <li class="list-group-item p-1">2018年03月</li>
 </ul>

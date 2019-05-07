@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   
    # 企業ポリシーページ
   get 'static_pages/home'
-  get 'static_pages/about'
-  get 'static_pages/help'
-  get 'static_pages/agreement'
-  get 'static_pages/policy'
-  get 'static_pages/corporate'
+  # get 'static_pages/about'
+  # get 'static_pages/help'
+  # get 'static_pages/agreement'
+  # get 'static_pages/policy'
+  # get 'static_pages/corporate'
+  
+  # 検索
+  get 'search', to: 'static_pages#search'
+  # アーカイブ
+  get 'archive/:yyyymm', to: 'static_pages#archive', as: :archive
   
   # ログイン
   get    '/login',   to: 'sessions#new'
@@ -94,14 +99,14 @@ end
 # seed.rb // times.do  posts.createを15から10に変更した
 
 
+# 検索 or アーカイブ (2つともコントローラーは作成せずにStaticPageに付随させた)
+# rails g controller static_pages search archive
+# test/search_test.rb
+# test/archive_test.rb
+
+
 # ここから！！！！！！
-# rails db:migrate /rails db:seed 
 # デプロイ
-
-# 検索 or アーカイブ
-# rails g controller Archive
-# rails g controller search (コントローラーいらないかも？　static_pagescontrollerに記入するか？)
-
 
 # コメントモデル(Event_post用)
 # rails g model Eventcomment content:string user_id:integer eventpost:references

@@ -10,27 +10,22 @@ class StaticPagesController < ApplicationController
     # 人気の記事
     # Popular articles
     
-    # カテゴリー
-    @categorys = Category.all
+
+  end
+  
+  def search
+    @search = params[:search]
+    @eventposts = Eventpost.search(@search).page(params[:page]).per(6)
     
-    # アーカイブ
-    # @archive = Eventpost.group("MONTH(date)") #月ごと
-    # @archive = Eventpost.group("MONTH(date)").sum(:column) #月ごとの合計値
-
+    # @posts = Post.where(['content LIKE ?', "%#{@search}%"]).page(params[:page]).per(6)
   end
-
-  def about
+  
+  def archive
+    @yyyymm = params[:yyyymm]
+    @eventposts = Eventpost.where("strftime('%Y%m', created_at) = '"+@yyyymm+"'").page(params[:page]).per(6)
+  
   end
+  
+  
 
-  def help
-  end
-
-  def agreement
-  end
-
-  def policy
-  end
-
-  def corporate
-  end
 end

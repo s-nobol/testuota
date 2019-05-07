@@ -7,6 +7,63 @@ eventpost:
   image: MyString
   category_id: 1
   user: first_user
+  
+
+
+# 数か月前に作成された記事
+january:
+  title: Januarytitel
+  sub_title: Januarysubtitle
+  content: this is may
+  image: MyString
+  category_id: 1
+  user: first_user
+  created_at: <%= 4.month.ago %>
+  
+february:
+  title: February_titel
+  sub_title: February_subtitle
+  content: this is February
+  image: MyString
+  category_id: 1
+  user: first_user
+  created_at: <%= 3.month.ago %>
+  
+march:
+  title: March_titel
+  sub_title: March_subtitle
+  content: this is March
+  image: MyString
+  category_id: 1
+  user: first_user
+  created_at: <%= 2.month.ago %>
+  
+april:  
+  title: April_titel
+  sub_title: April_subtitle
+  content: this is April
+  image: MyString
+  category_id: 1
+  user: first_user
+  created_at: <%= 1.month.ago %>
+  
+may:  
+  title: may_titel
+  sub_title: may_subtitle
+  content: this is may
+  image: MyString
+  category_id: 1
+  user: first_user
+  created_at: <%= 12.month.ago %>
+  
+june:
+  title: june_titel
+  sub_title: june_subtitle
+  content: this is june
+  image: MyString
+  category_id: 1
+  user: first_user
+  created_at: <%= 11.month.ago %>
 
 # two:
 #   title: MyString
