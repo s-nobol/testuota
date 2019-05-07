@@ -49,12 +49,23 @@ users = User.all[1..6]
   end
 end
 
+
+
 # カテゴリーの作成
 categorys = ["鉄道","廃線","旅","風景","ローカル鉄道"]
 categorys.each do |category_name|
   Category.create!(name: category_name)
 end
 
+# Event_post作成
+title = "title"
+sub_title = "sub_title"
+content = "content"
+Eventpost.create!( title: title, 
+                  sub_title: sub_title,
+                  content: content, 
+                  category: Category.first,
+                  user: User.first )
 
 # フォロワーの作成
 # users = User.all
