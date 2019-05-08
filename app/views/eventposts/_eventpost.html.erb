@@ -6,12 +6,18 @@
     
     <!--ポストステータス-->
     <div class="bg-light p-2">
-      <span>id: <%= eventpost.id %></span>
-    　<span>コメント</span><span>シェア</span>
-    　<span>カテゴリ<%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-primary" %></span>
-    　<%= link_to "編集", edit_eventpost_path(eventpost), class:"text-success" %>
-    　<%= link_to "削除", eventpost_path(eventpost), method: :delete, class:"text-danger" %>
-    </div>
+      <small><i class="fas fa-clock mr-2"></i>作成時間: <%= eventpost.created_at %></small>
+      <small><i class="fas fa-folder-open mr-2"></i>カテゴリ<%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-primary" %></small>
+      
+      <% if admin_user %>
+        <%= link_to "編集", edit_eventpost_path(eventpost), class:"text-success" %>
+        <%= link_to "削除", eventpost_path(eventpost), method: :delete, class:"text-danger" %>
+      <% end %>　
+    </div> 
+    
+    <!--シェア-->
+    <%= render "eventposts/share_form", eventpost: eventpost %>
+    
     
     <!--サブタイトル-->
     <div class="mt-3">

@@ -1,21 +1,43 @@
 <div class="border p-3">
   <div>
-    <h5><b>自分の棚</b></h5>
+    <h5 class="border-bottom-dashed2 p-1"><b>自分の棚</b></h5>
   </div>
   
-  <div>
-    <p>検索</p>
+  <div class="mt-2">
+     <!--検索フォーム-->
+    <%= form_tag(search_path,:method => 'get' , class:"", id:"search") do %>
+       <%= text_field_tag :search ,:"", class: "text-muted border p-1 w-100", placeholder: "検索"%>
+       <%#= submit_tag 'Search', :name => nil %>
+    <% end %>
   </div>
 
   
-  <div>
-    <!--@user.likes.count-->
-    <%= link_to "お気に入り #{@user.likes.count }", like_path(@user), class:"text-danger" %></br>
+  <div class="mt-2">
+  
+    <!--お気に入りページ-->
+    <div>
+      <%= link_to like_path(@user) do  %>
+        <span class="text-danger">お気に入り</span>
+        <span class="badge badge-danger badge-pill"><%= @user.likes.count %></span>
+      <% end %>
+    </div>
     
-    <!--@user.count.count-->
-    <%= link_to "コメント #{@user.comments.count }", comment_path(@user) , class:"text-success" %></br>
     
-    <%= link_to "メッセージ", "#", class:"text-dark" %></br>
+    <!--コメントページ-->
+    <div>
+      <%= link_to comment_path(@user) do  %>
+        <span class="text-success">コメント</span>
+        <span class="badge badge-success badge-pill"><%= @user.comments.count %></span>
+      <% end %>
+    </div>
+    
+    <!--コメントページ-->
+    <div>
+      <%= link_to "#" do  %>
+        <span class="text-primary">メッセージ</span>
+        <span class="badge badge-primary badge-pill">115<%=  %></span>
+      <% end %>
+    </div>
     
     <!--自分が保存したロケーションの数-->
     <%= link_to "おすすめスポット", "#", class:"text-dark" %></br>

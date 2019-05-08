@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :likes,               only: [ :show, :create, :destroy]
   resources :eventposts
   resources :categorys, only: [:show, :new, :create, :destroy]
+  resources :eventpost_comments, only: [:show, :create, :destroy]
 end
 
 
@@ -105,17 +106,20 @@ end
 # test/archive_test.rb
 
 
-# ここから！！！！！！
-# デプロイ
-
 # コメントモデル(Event_post用)
-# rails g model Eventcomment content:string user_id:integer eventpost:references
-# rails g controller Eventcomments
+# rails g model Eventpost_comment content:string user_id:integer eventpost:references
+# rails g controller Eventpost_comments
+# rails g integration_test eventpost_comment
 
 
-# 全体のView修正()
-# 人気の記事一覧作成
+# ここから！！！！！！
+# rails generate uploader EventpostImage
+# 全体のView修正(改)
+# Usershow　Post＿Createボタン修正
+# 人気記事一覧ページ修正
 
+# メッセージ通知機能作成
+# post検索機能作成
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string

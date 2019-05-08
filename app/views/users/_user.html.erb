@@ -4,41 +4,74 @@
     <div class="image_form rounded-circle text-center mx-auto mt-4" id="img_field" >
       
         <!-- 画像があるときは画像を表示する-->
-        <% if user.image.present? %>
-          <%= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon" , width:"130" ,height:"130") %>
-        <% else %>
-          <%= image_tag("user_image.jpg" , class:"image_form rounded-circle" ,id:"icon", width:"130" ,height:"130") %>
+        <%= link_to user_path(user) do  %>   
+          <% if user.image.present? %>
+            <%= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon" , width:"130" ,height:"130") %>
+          <% else %>
+            <%= image_tag("user_image.jpg" , class:"image_form rounded-circle" ,id:"icon", width:"130" ,height:"130") %>
+          <% end %>
         <% end %>
+     
     </div>
+    
   
   <!--ユーザー名-->
   <div class="mt-3">
-    <span><b><%= link_to "#{user.name}さん" , user ,class:"text-dark" %></b> user_id: <%= user.id %></span></br>
-    <span><%= user.email %></span>
-    <span><%= user.address %></span>
-    <span><%= user.gender %></span>
-  </div>
-  
-  <div>
-    <span><%= link_to "投稿する", new_post_path, class:"" %></span></br>
     
+    <small><b>名前:</b></small>
+    <span><b><%= link_to "#{user.name}さん" , user ,class:"text-dark" %></b> 
+    user_id: <%= user.id %>
+    
+    <!--管理人ユーザーなら以下を表示-->
+      <% if user.admin? %>
+      <span class="badge badge-danger badge-pill">管理者</span>
+      <% end %>
+    </span></br>
+    
+    <small><b>メール:</b></small>
+    <small><%= user.email %></small></br>
+    
+    <!--ひとこと-->
+    <% if controller_name == "users" %>
+      <small><b>ひとこと:</b></small></br>
+      <small><%= user.message %></small></br>
+    <% end %>
+    
+    <!--住所-->
+    <% if user.address? %>
+      <small><b>住所: </b><%= user.address %></small></br>
+    <% end %>
+    
+    <!--性別-->
+    <% if user.gender? %>
+      <small><b>性別: </b><%= user.gender %></small>
+    <% end %>
   </div>
   
-  <!--ユーザー編集-->
-  <div>
-    <%= link_to "ユーザー編集", edit_user_path(@user) ,class:"" %>
-  </div>
+  <!--<div class="mt-5"><button class="btn btn-secondary btn-block p-1">プロフィールの編集</button></div>-->
+<% if !current_user.nil? %>
+  <% if user == current_user %>
   
-  <% if user.admin? %>
-  <div>
-      <%= link_to "まとめ記事作成", new_eventpost_path ,class:"" %>
-
-  </div> 
-  <div>
-      <%= link_to "カテゴリーを新規登録", new_category_path ,class:"" %>
-
-  </div>
+    <!--写真投稿-->
+    <div>
+      <span><%= link_to "投稿する", new_post_path, class:"" %></span></br>
+      
+    </div>
+    
+    <!--ユーザー編集-->
+    <div>
+      <%= link_to "ユーザー編集", edit_user_path(@user) ,class:"" %>
+    </div>
+        
+    
+    <!--管理人ユーザーなら以下を表示-->
+    <% if user.admin? %>
+      <div><%= link_to "まとめ記事作成", new_eventpost_path ,class:"" %></div> 
+      <div><%= link_to "カテゴリーを新規登録", new_category_path ,class:"" %></div>
+    <% end %>
+    
   <% end %>
+<% end %>
+ 
 </div>
-
 

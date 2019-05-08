@@ -16,7 +16,7 @@ User.create(name: "123",
 # ユーザー作成
 15.times do |n|
   User.create(name: "#{n}_user", 
-              email: "#user_#{n}@test.com",
+              email: "user_#{n}@test.com",
               password: "password",
                )
 end
@@ -58,14 +58,25 @@ categorys.each do |category_name|
 end
 
 # Event_post作成
-title = "title"
-sub_title = "sub_title"
-content = "content"
-Eventpost.create!( title: title, 
-                  sub_title: sub_title,
-                  content: content, 
-                  category: Category.first,
-                  user: User.first )
+5.times do |n|
+  title = "タイトル_#{n}"
+  sub_title = "サブタイトル_#{n}"
+  content = "テスト内容_#{n}"
+  eventpost = Eventpost.create!( title: title, 
+                    sub_title: sub_title,
+                    content: content, 
+                    category: Category.first,
+                    user: User.first )
+  # コメント追加
+  5-n.times do |m|
+    content = "テストコメント_#{m}"
+    eventpost.eventpost_comments.create(user_name: "", content: content)
+  end
+end
+
+
+                  
+                  
 
 # フォロワーの作成
 # users = User.all

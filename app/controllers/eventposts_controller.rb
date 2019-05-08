@@ -56,13 +56,15 @@ class EventpostsController < ApplicationController
   
   def show
     @eventpost = Eventpost.find(params[:id])
+    @eventpost_comment = EventpostComment.new
+    @eventpost_comments = @eventpost.eventpost_comments
   end
   
   
   private
   
     def eventposts_params
-      params.require(:eventpost).permit(:title, :sub_title, :content, :category_id)
+      params.require(:eventpost).permit(:title, :sub_title, :content, :category_id, :image)
     end  
   
     # # 管理者ユーザーのみがパスできる

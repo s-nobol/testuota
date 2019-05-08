@@ -12,19 +12,20 @@
         
         <ul class="navbar-nav justify-content-end ">　
 
+               
+                
                 <!--#ドロップアウトボタンの追加-->
               <% if !current_user.nil?  %>
+              
                 <li class="nav-link p-0" data-toggle="dropdown"  >  
-                
-                  <small class="nav-link p-1 text-white" id="link">
-                  
+                  <small class="nav-link p-1 text-white" id="link" style="cursor: hand; cursor:pointer;">
                     <!--管理者ユーザーのみ反映-->
                     <% if current_user.admin? %>
                       <span class="badge badge-danger badge-pill">管理者</span>
                     <% end %>
-                    
-                    <%= current_user.name %>
+                    <%= current_user.name %>　メニュー<i class="fas fa-caret-down"></i>
                   </small>
+              
                 </li>    
                       
                  

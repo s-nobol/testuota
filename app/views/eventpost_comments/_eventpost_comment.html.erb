@@ -1,0 +1,37 @@
+<!--コメント一覧フォーム-->
+<div class="border-top-dashed p-2">
+  
+    <!--ユーザー名-->
+    <div class="p-1">
+      
+        <!--コメントID-->
+        <span><%= eventpost_comment.id %></span>
+        
+        <!--名前-->
+        <span class="text-success pl-2">
+          <% if eventpost_comment.user_name.empty? %>
+            <%= "名無しの鉄オタさん" %>
+          <% else %> 
+            <%= "#{eventpost_comment.user_name}さん" %>
+          <% end %>
+        </span>
+        
+        <!--作成時間-->
+        <span class="pl-2"><%= eventpost_comment.created_at %></span>
+        <span>id</span>
+        
+        <!--削除ボタン-->
+        <% if admin_user %>
+        <span><%= link_to "削除", eventpost_comment_path(eventpost_comment) ,method: :delete, class:"text-danger" %></span>
+        <% end %>
+        
+    </div>
+    
+    <!--コメント-->
+    <div class="p-1">
+      <!--削除予定-->
+      <span>eventpost_id<%= eventpost_comment.eventpost_id %></span>
+      <%= eventpost_comment.content %>
+    </div>
+
+</div>

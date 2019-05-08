@@ -56,4 +56,57 @@ img:hover{
   background-color: gray;
   opacity: 0.5;
   }
+
+/*border*/
+
+/*見出し線  */
+.border-left-insert{
+  border-left: inset 5px black;
+}
+
+/*点線*/
+.border-top-dashed{
+  border-top: dashed 1px gray;
+  }
+  
+  /*点線*/
+.border-bottom-dashed2{
+  border-bottom: dashed 1px gray;
+  }
+  
+#mane-bar:hover{
+  /*background-color: whitesmoke;*/
+  border-right: inset 5px #FFA07A;
+   /*box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);*/
+  }
+  
+.text-dodgerblue{
+  /*color: dodgerblue; */
+  color: #FFA07A;
+  opacity: 0.4;
+  }
+  
+  .text-orangered{
+  /*color: orangered;  */
+    color: #FFA47A;
+  opacity: 0.4;
+  }
+  
+  .text-mediumseagreen{
+  /*color: mediumseagreen;   */
+    color: #FF407A;
+  opacity: 0.4;
+  }
+  
+  .text-deeppink{
+  /*color: deeppink;   */
+    color: #F4405D;
+  opacity: 0.4;
+  }
+  
+  .text-darkorchid {
+  color: darkorchid ; 
+    color: #F4705D;
+  opacity: 0.4;
+  }
   

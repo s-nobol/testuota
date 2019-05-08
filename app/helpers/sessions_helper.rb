@@ -47,6 +47,14 @@ module SessionsHelper
     end
   end
   
+  def admin_user
+    if !current_user.nil?
+        if current_user.admin?
+          true
+        end
+    end
+  end
+  
   # 記憶したURL (もしくはデフォルト値) にリダイレクト
   # def redirect_back_or(default)
   #   redirect_to(session[:url] || default)

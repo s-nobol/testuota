@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# one:
+#   content: MyString
+#   user_id: 1
+#   eventpost: one
+
+# two:
+#   content: MyString
+#   user_id: 1
+#   eventpost: two
+
+eventpost_comment:
+    user_name: first_user
+    content: First_user_MyString
+    user_id: 1
+    eventpost: eventpost
+    
+# 複数のEvent_post作成
+
+<% 10.times do |n| %>
+eventpost_comment<%= n %>:
+    user_name: test_user_<% n %>
+    content: MyString<% n %>
+    eventpost: eventpost
+<% end %>

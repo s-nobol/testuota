@@ -1,0 +1,42 @@
+<!--人気記事一覧-->
+<% @populer_eventposts = Eventpost.popular_eventposts_1 %>
+<% @populer_eventposts.each do |eventpost| %>
+
+  <%= link_to eventpost do %>
+        <div class="gb-dark p-1" id="pop_div">
+          <div class=" border-black" id="event_image">
+            <!--// 画像があるときは画像を表示する-->
+            <small class="s-text"><b>コメント<%= eventpost.eventpost_comments.count %></b></small>
+            <%# if eventpost.image.present? %>
+              <%#= image_tag(eventpost.image.url , class:"image_form rounded-circle" ,id:"icon") %>
+            <%# else %>
+              <%= image_tag("no_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"80") %>
+            <%# end %>
+            
+            <div class="bg-black">
+              <small class="text-white"><b><%= eventpost.title %></b></small>
+            </div>
+          </div>
+        </div>
+  <% end %>
+  
+<% end %>
+
+<style>
+
+#event_image {/*親div*/
+  position: relative;/*相対配置*/
+  }
+
+#event_image .s-text {
+  position: absolute;/*絶対配置*/
+  color: white;/*文字は白に*/
+  background-color: black;
+  top: 0;
+  right: 0;
+  }
+
+#event_image img {
+  width: 100%;
+  }
+</style>

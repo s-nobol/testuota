@@ -1,12 +1,15 @@
 class Eventpost < ApplicationRecord
   
+  has_many :eventpost_comments
   belongs_to :user
   belongs_to :category
-
+  mount_uploader :image, EventpostImageUploader 
   validates :title, presence: true
   validates :sub_title, presence: true
   validates :content, presence: true
   validates :category_id, presence: true
+  validate  :image_size
+
   # validates :image, presence: true
   
   # 記事（まとめて高速化）
@@ -15,9 +18,10 @@ class Eventpost < ApplicationRecord
   end
   
   # 人気の記事一覧
-  def popular_eventposts
-    # Eventpost.joins(:eventpost_comments).order(Arel.sql("created_at desc"))
+  def self.popular_eventposts_1
+    Eventpost.joins(:eventpost_comments).group(:eventpost_id).order(Arel.sql("count(eventpost_id) desc")).limit(10)
   end
+  
 
   # 検索
   def self.search(search)
@@ -28,13 +32,37 @@ class Eventpost < ApplicationRecord
   # アーカイブ
   def self.archives
     # Railsでブログアプリに月別アーカイブを導入(参考)
-   
-    Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
-    
+    if Rails.env.production?
+      Eventpost.group("date_part('month' ,created_at)").count
+    else
+      Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
+    end
     # Eventpost.group("date('%Y%m',created_at)").count
     # Eventpost.group("DATE(created_at, '%Y%m%d')").count
     # => ["2019-05-07", 1]
-    
+    # Eventpost.group("MONTH(created_at)").sum(:column)
 
   end
+  private
+
+    # アップロードされた画像のサイズをバリデーションする
+    def image_size
+      if image.size > 5.megabytes
+        errors.add(:image, "should be less than 5MB")
+      end
+    end
 end
+
+# ExampleLog.group("date_part('hour', timezone('Australia/Sydney', example_logs.created_at))").count7
+# where({blog_id: blog.id}).group_by_month(:created_at, format: "%Y年%b", reverse: true, series: false).count
+# Eventpost.group("date_part('month' ,created_at)").count
+# Eventpost.group('date("%y",created_at)').count
+# dateを正規表現で変換してみる
+# => {"2019-05-07"=>5} 考えてみる
+# select 
+# date_part('year', created) as year, 
+# date_part('month', created) as month,
+# sum(price) as sum_price
+# from sales
+# group by year,month
+# order by year,month;

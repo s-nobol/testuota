@@ -24,8 +24,6 @@
         <% @category = Category.all %>
         <div>
           <div><b><%= f.label :カテゴリー %></b></div>
-          <%#= f.text_field :content , class:"w-100 border p-1" %>
-          <%#= f.select :category_id, [1,2,3,4,5,6,7,8,9,10] %>
           <%= f.collection_select :category_id, @category, :id, :name  %>
         </div>
         
@@ -34,7 +32,7 @@
           <%#= f.submit "作成", class: "btn btn-dark" %>
           <div class="btn btn-danger " id="preview">プレビュー</div>
         </div>
-        
+         <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
         
         <div class="text-right mt-3">
           <%= f.submit "作成", class: "btn btn-dark" %>
