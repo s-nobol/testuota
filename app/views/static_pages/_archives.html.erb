@@ -2,8 +2,12 @@
 <% if @archives = Eventpost.archives %>
   <div class="bg-black text-white p-1">アーカイブ</div>
   <ul class="list-group list-group-flush text-primary">
-       <% @archives.each do |yyyymm, count| %>  
-             <%= link_to ymconv(yyyymm, count.to_s), archive_path(yyyymm), class:"list-group-item p-1" %>
+       <% @archives.each do |yyyymm, count| %>
+       
+             <!--カウントと時間のみ表示-->
+              <span>時間<%= yyyymm %></span>
+              <span>カウント<%= count %></span>
+             <%#= link_to ymconv(yyyymm, count.to_s), archive_path(yyyymm), class:"list-group-item p-1" %>
        <% end %>
   </ul>     
 <% end %>

@@ -5,7 +5,7 @@
   
   <div class="mt-2">
      <!--検索フォーム-->
-    <%= form_tag(search_path,:method => 'get' , class:"", id:"search") do %>
+    <%= form_tag(post_search_path,:method => 'get' , class:"", id:"search") do %>
        <%= text_field_tag :search ,:"", class: "text-muted border p-1 w-100", placeholder: "検索"%>
        <%#= submit_tag 'Search', :name => nil %>
     <% end %>

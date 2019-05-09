@@ -9,23 +9,25 @@ class Eventpost < ApplicationRecord
   validates :content, presence: true
   validates :category_id, presence: true
   validate  :image_size
-
-  # validates :image, presence: true
   
   # 記事（まとめて高速化）
-  def self.eventposts
-    Eventpost.joins(:category).order(Arel.sql("created_at desc"))
-  end
+  # def self.eventposts
+  #   Eventpost.joins(:category).order(Arel.sql("created_at desc"))
+  # end
   
   # 人気の記事一覧
   def self.popular_eventposts_1
     Eventpost.joins(:eventpost_comments).group(:eventpost_id).order(Arel.sql("count(eventpost_id) desc")).limit(10)
   end
   
+  def self.popular_eventposts_2
+    Eventpost.find(EventpostComment.group(:eventpost_id).order(Arel.sql('count(eventpost_id) desc')).limit(5).pluck(:eventpost_id))
+  end
+  
 
   # 検索
   def self.search(search)
-    return Post.all unless search
+    return Eventpost.all unless search
     Eventpost.where(['title LIKE ?', "%#{search}%"])
   end
   
@@ -34,15 +36,12 @@ class Eventpost < ApplicationRecord
     # Railsでブログアプリに月別アーカイブを導入(参考)
     if Rails.env.production?
       Eventpost.group("date_part('month' ,created_at)").count
+      #うまくいったっぽい
     else
       Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
     end
-    # Eventpost.group("date('%Y%m',created_at)").count
-    # Eventpost.group("DATE(created_at, '%Y%m%d')").count
-    # => ["2019-05-07", 1]
-    # Eventpost.group("MONTH(created_at)").sum(:column)
-
   end
+  
   private
 
     # アップロードされた画像のサイズをバリデーションする

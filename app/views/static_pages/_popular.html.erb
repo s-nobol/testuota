@@ -1,5 +1,5 @@
 <!--人気記事一覧-->
-<% @populer_eventposts = Eventpost.popular_eventposts_1 %>
+<% @populer_eventposts = Eventpost.popular_eventposts_2 %>
 <% @populer_eventposts.each do |eventpost| %>
 
   <%= link_to eventpost do %>
@@ -21,6 +21,7 @@
   <% end %>
   
 <% end %>
+
 
 <style>
 

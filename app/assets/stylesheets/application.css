@@ -76,8 +76,9 @@ img:hover{
   
 #mane-bar:hover{
   /*background-color: whitesmoke;*/
-  border-right: inset 5px #FFA07A;
+  /*border-right: inset 5px #78B9FF;*/
    /*box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);*/
+   text-decoration: underline;
   }
   
 .text-dodgerblue{
@@ -88,7 +89,8 @@ img:hover{
   
   .text-orangered{
   /*color: orangered;  */
-    color: #FFA47A;
+    /*color: #E1E3E4;*/
+  color: black;
   opacity: 0.4;
   }
   
@@ -110,3 +112,14 @@ img:hover{
   opacity: 0.4;
   }
   
+  
+  /*入力フォーム*/
+#search-form{
+  font-size: 40px;
+  height: 60px;
+  outline: none;
+  border: 5px solid white; 
+  }
+#search-btn{
+  height: 60px;
+  }

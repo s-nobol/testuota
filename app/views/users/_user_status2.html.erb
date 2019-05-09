@@ -1,23 +1,50 @@
 <div class=" ">
 
-  <div class="w-100 border-bottom m-1 " id="mane-bar" >
-    <h1 class="text-orangered"><b>C</b></h1>
-    <small>写真の投稿</small>
-  </div>
+
+    <%= link_to new_post_path, class:"" do %>
+      <div class="w-100 m-1" id="mane-bar" >
+          <h1 class="text-orangered " text-decoration:none; ><b class="">C</b></h1>
+          <small class="text-orangered">写真の投稿</small>
+      </div>
+    <% end %>
   
-  <div class="w-100 border-bottom m-1" id="mane-bar" >
-    <h1 class="text-mediumseagreen"><b>E</b></h1>
-    <small>記事の作成</small>
-  </div>
+    <%= link_to new_post_path do %>
+      <div class="w-100 m-1" id="mane-bar" >
+            <h1 class="text-orangered "><b class="">E</b></h1>
+            <small class="text-orangered">プロフィールの編集</small>
+      </div> 
+    <% end %>
   
-  <div class="w-100 border-bottom m-1" id="mane-bar" >
-    <h1 class="text-dodgerblue"><b>L</b></h1>
-    <small>ロケーションの追加</small>
-  </div>
+    <%= link_to posts_path do %>
+      <div class="w-100 m-1" id="mane-bar" >
+            <h1 class="text-orangered"><b class="">I</b></h1>
+            <small class="text-orangered">記事一覧</small>
+      </div>
+    <% end %>
   
-  <div class="w-100 border-bottom m-1 " id="mane-bar" >
-    <h1 class="text-darkorchid"><b>G</b></h1>
-    <small>新規カテゴリ作成</small>
-  </div>
   
+  <!--管理者ユーザーのみ表示-->
+  <% if admin_user %>
+  
+      <%= link_to new_eventpost_path do %>
+        <div class="w-100 m-1" id="mane-bar" >
+            <h1 class="text-orangered"><b class="">P</b></h1>
+            <small class="text-orangered">Event記事作成</small>
+        </div>
+      <% end %>
+    
+      <%= link_to new_post_path do %>
+        <div class="w-100 m-1" id="mane-bar" >
+            <!--<h1 class="text-orangered"><b class="">L</b></h1>-->
+            <!--<small class="text-orangered">ロケーションの追加</small>-->
+        </div>
+      <% end %>
+    
+      <%= link_to new_category_path do %>
+        <div class="w-100 m-1 " id="mane-bar" >
+            <h1 class="text-orangered"><b class="">G</b></h1>
+            <small class="text-orangered">新規カテゴリ作成</small>
+        </div>
+      <% end %>
+  <% end %>
 </div>

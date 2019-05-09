@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   # get 'static_pages/corporate'
   
   # 検索
-  get 'search', to: 'static_pages#search'
+  get 'eventpost_search', to: 'static_pages#search'
+  get 'post_search', to: 'posts#search'
+  
+  # 人気記事一覧ページ
+  get 'postpopular', to: 'posts#popular'
+  
   # アーカイブ
   get 'archive/:yyyymm', to: 'static_pages#archive', as: :archive
   
@@ -113,13 +118,14 @@ end
 
 
 # ここから！！！！！！
-# rails generate uploader EventpostImage
-# 全体のView修正(改)
+# post検索機能作成
+# post/popular.html作成(修正)
 # Usershow　Post＿Createボタン修正
-# 人気記事一覧ページ修正
 
 # メッセージ通知機能作成
-# post検索機能作成
+# とりあえずクリア（メッセージが正しく表示されているかテストする）
+
+# 全体のView修正(改)
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string

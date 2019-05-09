@@ -9,9 +9,20 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 400 }
   validate  :picture_size
   
+  # 検索
+  def self.post_search
+    return Post.all unless search
+    Post.where(['title LIKE ?', "%#{@search}%"])
+  end
   
-  
-
+  # 人気一覧
+  def self.popular
+    
+    Post.find(
+              Like.group(:post_id).order(Arel.sql('count(post_id) desc'))
+              .limit(5).pluck(:post_id)
+              )
+  end
   
   private
 

@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     
   def index
     @posts = Post.all.page(params[:page]).per(30)
+    @index = "text-primary"
   end
   
   def show
@@ -63,6 +64,20 @@ class PostsController < ApplicationController
       wants.html { redirect_to(current_user) }
       wants.xml  { head :ok }
     end
+  end
+  
+  # 検索
+  def search
+    @search = params[:search]
+    # @posts = Post.post_search(@search)
+    @posts = Post.where(['title LIKE ?', "%#{@search}%"]).page(params[:page]).per(30)
+  end
+  
+  # 人気一覧ページ
+  def popular
+    @posts = Post.popular
+    @popular = "text-primary"
+    
   end
   
   private

@@ -49,29 +49,29 @@
   </div>
   
   <!--<div class="mt-5"><button class="btn btn-secondary btn-block p-1">プロフィールの編集</button></div>-->
-<% if !current_user.nil? %>
-  <% if user == current_user %>
+<!--<% if !current_user.nil? %>-->
+<!--  <% if user == current_user %>-->
   
     <!--写真投稿-->
-    <div>
-      <span><%= link_to "投稿する", new_post_path, class:"" %></span></br>
+<!--    <div>-->
+<!--      <span><%= link_to "投稿する", new_post_path, class:"" %></span></br>-->
       
-    </div>
+<!--    </div>-->
     
     <!--ユーザー編集-->
-    <div>
-      <%= link_to "ユーザー編集", edit_user_path(@user) ,class:"" %>
-    </div>
+<!--    <div>-->
+<!--      <%= link_to "ユーザー編集", edit_user_path(@user) ,class:"" %>-->
+<!--    </div>-->
         
     
     <!--管理人ユーザーなら以下を表示-->
-    <% if user.admin? %>
-      <div><%= link_to "まとめ記事作成", new_eventpost_path ,class:"" %></div> 
-      <div><%= link_to "カテゴリーを新規登録", new_category_path ,class:"" %></div>
-    <% end %>
+<!--    <% if user.admin? %>-->
+<!--      <div><%= link_to "まとめ記事作成", new_eventpost_path ,class:"" %></div> -->
+<!--      <div><%= link_to "カテゴリーを新規登録", new_category_path ,class:"" %></div>-->
+<!--    <% end %>-->
     
-  <% end %>
-<% end %>
+<!--  <% end %>-->
+<!--<% end %>-->
  
 </div>
 

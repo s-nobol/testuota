@@ -47,6 +47,16 @@ module SessionsHelper
     end
   end
   
+  # login_userか？
+  def current_user?(user)
+    if !current_user.nil?
+      if user == current_user
+        user
+      end
+    end
+    
+  end
+  
   def admin_user
     if !current_user.nil?
         if current_user.admin?

@@ -58,6 +58,13 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+  # メッセージ通知
+  def messages_count
+    # post_ids = "SELECT id FROM posts
+    #             WHERE  user_id = #{self.id}"
+    Comment.where("post_id IN (?)", self.post_ids).limit(9)
+  end
+  
   private
 
     # アップロードされた画像のサイズをバリデーションする

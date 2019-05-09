@@ -17,7 +17,7 @@ class SearchTest < ActionDispatch::IntegrationTest
     # assert_select '#search', search_path
     
     # 無効な検索データ送信
-    get search_path params: { search: "test" }
+    get eventpost_search_path params: { search: "test" }
     assert_template "static_pages/search"
     
     # すべてのポストが表示されない
@@ -28,7 +28,7 @@ class SearchTest < ActionDispatch::IntegrationTest
     
     # 有効な検索を送信
     search = "string"
-    get search_path params: { search: search }
+    get eventpost_search_path params: { search: search }
     assert_template "static_pages/search"
     
     eventposts = Eventpost.where(['title LIKE ?', "%#{search}%"])
