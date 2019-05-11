@@ -119,13 +119,13 @@ end
 # rails g controller Eventpost_comments
 # rails g integration_test eventpost_comment
 
-
 # メッセージfeed作成
 # rails g controller Messages show
 
 # ここから！！！！！！
-# 全体のView修正(改)
-# popular2修正
+# user.email unique
+# archiveの修正
+
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string
 # rails g controller Locationposts new show edit index

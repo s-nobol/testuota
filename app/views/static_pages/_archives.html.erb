@@ -7,12 +7,20 @@
              <!--カウントと時間のみ表示-->
               <span>時間<%= yyyymm %></span>
               <span>カウント<%= count %></span>
-             <%#= link_to ymconv(yyyymm, count.to_s), archive_path(yyyymm), class:"list-group-item p-1" %>
+              
+              <% if Rails.env.production? %>
+                <% yyyymm= year_month(yyyymm) %>
+                <%= link_to "#{yyyymm[0]}年#{yyyymm[1]}月 (#{count})", archive_path(yyyymm[2]), class:"list-group-item p-1" %>
+              <% else %>
+                 <%= link_to ymconv(yyyymm, count.to_s)+"test", archive_path(yyyymm), class:"list-group-item p-1" %>
+              <% end %>
        <% end %>
   </ul>     
 <% end %>
 
-
+  <!--# アーカイブ出力結果-->
+  <!--# 時間[2019.0, 5.0]-->
+  <!--# カウント5-->
 
 
 <div class="bg-black text-white p-1">アーカイブ</div>

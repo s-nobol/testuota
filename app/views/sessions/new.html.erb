@@ -1,23 +1,21 @@
 
-<div class="container ">
+<div class="container mt-3">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 m-auto">
     
-      <h1>Sessions#new</h1>
-      <p>Find me in app/views/sessions/new.html.erb</p>
-      <h1>Login</h1>
+      <h2><b>ログイン</b></h2>
       
       <%= form_for(:session, url: login_path ) do |f| %>
         <%#= render 'shared/error_messages' , object: f.object %>
        
        
         <div> 
-          <div><%= f.label :メールアドレス %></div>
+          <div><b><%= f.label :メールアドレス %></b></div>
           <%= f.email_field :email , class:"w-100 border p-1" %>
         </div>
         
         <div>
-          <div><%= f.label :パスワード %>
+          <div><b><%= f.label :パスワード %></b>
             <small><%= link_to "パスワードを忘れた", new_password_reset_path %></small>
           </div>
           <%= f.password_field :password , class:"w-100 border p-1" %>
@@ -32,5 +30,3 @@
     </div>
   </div>
 </div>
-
-<p class="text-danger text-center">フッターいらない↓↓↓</p>

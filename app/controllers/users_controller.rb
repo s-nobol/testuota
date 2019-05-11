@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       flash[:success] = "こんにちは#{@user.name}さん　アカウントの登録が完了しました"
       redirect_to @user
     else
-      flash[:danger] = "保存できません"
+      # flash[:danger] = "保存できません"
       render "new"
     end
   end

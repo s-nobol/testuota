@@ -41,6 +41,10 @@ class Eventpost < ApplicationRecord
       Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
     end
   end
+  # アーカイブ出力結果
+  # 時間[2019.0, 5.0]
+  # カウント5
+  # うまくいった計算式
   
   private
 
