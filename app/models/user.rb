@@ -58,11 +58,23 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+  # ログイン時間作成
+  def create_login_time
+    update_attribute(:updated_at, Time.now)
+  end
+  
   # メッセージ通知
-  def messages_count
-    # post_ids = "SELECT id FROM posts
-    #             WHERE  user_id = #{self.id}"
-    Comment.where("post_id IN (?)", self.post_ids).limit(9)
+  def comment_messages_feed
+    post_ids = "SELECT id FROM posts
+                 WHERE  user_id = #{self.id}"
+    Comment.where("post_id IN (#{post_ids})").where('created_at >= ?', self.updated_at).limit(5)
+  end
+  
+  # メッセージ通知テスト用
+  def comment_messages
+    post_ids = "SELECT id FROM posts
+                WHERE  user_id = #{self.id}"
+    Comment.where("post_id IN (#{post_ids})").where('created_at >= ?', self.created_at).limit(45)
   end
   
   private

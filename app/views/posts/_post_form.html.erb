@@ -4,14 +4,14 @@
         
         
             <% if @post.picture.present? %>
-              <%= image_tag(@post.picture.url , class:"img-fluid" ) %>
+              <%= image_tag(@post.picture.url , class:"img-fluid", id:"link-image" ) %>
             <% else %>
             
             
             
               <div class="image_form rounded-circle text-center mx-auto mt-4" id="picture_field" onClick="$('#file').click()" >
             
-              <%= image_tag("no_image.jpg", class:"img-fluid" )%>
+              <%= image_tag("no_image.jpg", class:"img-fluid", id:"link-image" )%>
               
                   <!--スピナー-->
                <div class="pt-4 bg-light" style="display: none;" role="status" id="spinner">
@@ -24,12 +24,6 @@
             <% end %>
             
             
-            
-          
-           
-          
-        
-        
         <!--エラーメッセージ-->
         <%= render 'shared/error_messages' , object: f.object %>
         

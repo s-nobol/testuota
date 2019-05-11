@@ -1,0 +1,16 @@
+<!--メッセージ一覧-->
+<% if current_user?(@user) %>
+  <% messages = @user.comment_messages_feed %>
+  <% if messages.any? %>
+    <div class="border-bottom">メッセージ一覧</div>
+    <div class="alert alert-success mt-2" role="alert" >
+      <% messages.each do |comment| %>
+          <small><i class="fas fa-exclamation-circle pr-2"></i>
+          <%= comment.user.name%>さんのコメント　<%= comment.content %></small></br>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <!--ログイン時間更新-->
+  <% login_time(@user) %>
+<% end %>

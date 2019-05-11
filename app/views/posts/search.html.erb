@@ -14,7 +14,7 @@
     <div class="row"> 
             
         <!--写真一覧ページ-->
-        <div class="col-12 border-bottom m-auto">
+        <div class="col-12 m-auto">
           <p  class="border-bottom"></p>
           
           <% @posts.each do |post| %>
@@ -23,9 +23,9 @@
               
                 <!--// 画像があるときは画像を表示する-->
                 <% if post.picture.thumb.present? %>
-                  <%= image_tag(post.picture.url(:thumb) , class:"image_form m-1", id:"image", width:"200" ,height:"130" ) %>
+                  <%= image_tag(post.picture.url(:thumb) , class:"image_form m-1", id:"link-image" , width:"200" ,height:"130" ) %>
                 <% else %>
-                  <%= image_tag("no_image.jpg" , class:"img-fluid m-1", id:"image", width:"260" ,height:"200") %>
+                  <%= image_tag("no_image.jpg" , class:"img-fluid m-1", id:"link-image" , width:"260" ,height:"200") %>
                 <% end %>
               
               <% end %>

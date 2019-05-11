@@ -15,20 +15,28 @@
  */
 
 
-#image:hover{
-  opacity: 0.6
-  }
-  
+/*基本背景色*/
 .bg-black{
    background-color: black; 
   }
   
 .border-black{
-  border: 5px solid black;
+  border: 3px solid black;
   }
-img:hover{
+  
+/*カスタム*/
+#link-image:hover{
   opacity: 0.7;
   }
+  
+/*リンクボタン(下線削除)*/
+#link-decoration{
+  text-decoration: none;
+  }
+a{
+  text-decoration: none;
+  }
+  
   
 /*Likeボタン*/
 .bg-heart{

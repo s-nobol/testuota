@@ -1,50 +1,53 @@
-<div class=" ">
+<% if current_user?(@user) %>
+    <div class="border-bottom"><b>メニュー</b></div>
+    <div class="">
 
-
-    <%= link_to new_post_path, class:"" do %>
-      <div class="w-100 m-1" id="mane-bar" >
-          <h1 class="text-orangered " text-decoration:none; ><b class="">C</b></h1>
-          <small class="text-orangered">写真の投稿</small>
-      </div>
-    <% end %>
-  
-    <%= link_to new_post_path do %>
-      <div class="w-100 m-1" id="mane-bar" >
-            <h1 class="text-orangered "><b class="">E</b></h1>
-            <small class="text-orangered">プロフィールの編集</small>
-      </div> 
-    <% end %>
-  
-    <%= link_to posts_path do %>
-      <div class="w-100 m-1" id="mane-bar" >
-            <h1 class="text-orangered"><b class="">I</b></h1>
-            <small class="text-orangered">記事一覧</small>
-      </div>
-    <% end %>
-  
-  
-  <!--管理者ユーザーのみ表示-->
-  <% if admin_user %>
-  
-      <%= link_to new_eventpost_path do %>
+      <%= link_to new_post_path, class:"" do %>
         <div class="w-100 m-1" id="mane-bar" >
-            <h1 class="text-orangered"><b class="">P</b></h1>
-            <small class="text-orangered">Event記事作成</small>
+            <h1 class="text-orangered " text-decoration:none; ><b class="">C</b></h1>
+            <small class="text-orangered">写真の投稿</small>
         </div>
       <% end %>
     
-      <%= link_to new_post_path do %>
+      <%= link_to edit_user_path(current_user) do %>
         <div class="w-100 m-1" id="mane-bar" >
-            <!--<h1 class="text-orangered"><b class="">L</b></h1>-->
-            <!--<small class="text-orangered">ロケーションの追加</small>-->
+              <h1 class="text-orangered "><b class="">E</b></h1>
+              <small class="text-orangered">プロフィールの編集</small>
+        </div> 
+      <% end %>
+    
+      <%= link_to posts_path do %>
+        <div class="w-100 m-1" id="mane-bar" >
+              <h1 class="text-orangered"><b class="">I</b></h1>
+              <small class="text-orangered">記事一覧</small>
         </div>
       <% end %>
     
-      <%= link_to new_category_path do %>
-        <div class="w-100 m-1 " id="mane-bar" >
-            <h1 class="text-orangered"><b class="">G</b></h1>
-            <small class="text-orangered">新規カテゴリ作成</small>
-        </div>
-      <% end %>
-  <% end %>
-</div>
+    
+    <!--管理者ユーザーのみ表示-->
+    <% if admin_user %>
+    
+        <%= link_to new_eventpost_path do %>
+          <div class="w-100 m-1" id="mane-bar" >
+              <h1 class="text-orangered"><b class="">P</b></h1>
+              <small class="text-orangered">Event記事作成</small>
+          </div>
+        <% end %>
+      
+        <%= link_to new_post_path do %>
+          <div class="w-100 m-1" id="mane-bar" >
+              <!--<h1 class="text-orangered"><b class="">L</b></h1>-->
+              <!--<small class="text-orangered">ロケーションの追加</small>-->
+          </div>
+        <% end %>
+      
+        <%= link_to new_category_path do %>
+          <div class="w-100 m-1 " id="mane-bar" >
+              <h1 class="text-orangered"><b class="">G</b></h1>
+              <small class="text-orangered">新規カテゴリ作成</small>
+          </div>
+        <% end %>
+        
+    <% end %>
+  </div>
+<% end %>

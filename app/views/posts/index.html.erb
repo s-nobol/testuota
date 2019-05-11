@@ -6,8 +6,6 @@
 
 <div class="container">
 
-    <!--<h1>Posts#index</h1>-->
-    <!--<p>Find me in app/views/posts/index.html.erb</p>-->
     <!--検索フォーム-->
     <%= render "posts/search_form" %>
   
@@ -23,9 +21,9 @@
               
                 <!--// 画像があるときは画像を表示する-->
                 <% if post.picture.thumb.present? %>
-                  <%= image_tag(post.picture.url(:thumb) , class:"image_form m-1", id:"image", width:"200" ,height:"130" ) %>
+                  <%= image_tag(post.picture.url(:thumb) , class:"image_form m-1", id:"link-image", width:"350" ,height:"250" ) %>
                 <% else %>
-                  <%= image_tag("no_image.jpg" , class:"img-fluid m-1", id:"image", width:"350" ,height:"250") %>
+                  <%= image_tag("no_image.jpg" , class:"img-fluid m-1", id:"link-image" , width:"350" ,height:"250") %>
                 <% end %>
               
               <% end %>

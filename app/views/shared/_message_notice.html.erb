@@ -1,0 +1,5 @@
+<% if @current_user.notice_message? %>
+  <% if messages = current_user.messages_count %>
+    <span class="badge badge-danger badge-pill"><% messages.count %></span>
+  <% end %>
+<% end %>

@@ -1,0 +1,50 @@
+<!--人気記事一覧-->
+<% @populer = Eventpost.popular_eventposts_2 %>
+<% @populer.each do |eventpost| %>
+<%= link_to eventpost, class:"pop2_link ", id:"link-decoration" do %>
+  <div class="gb-dark m-1" id="pop2_div">
+    <div class="" id="event_image">
+    
+      <!--// 画像があるときは画像を表示する-->
+      <!--<small class="s-text2"><b>コメント<%#= eventpost.eventpost_comments.count %></b></small>-->
+      <% if eventpost.image.present? %>
+        <%= image_tag(eventpost.image.url , class:"image_form  p-1 ", id:"link-image" , width:"200" ,height:"150") %>
+      <% else %>
+        <%= image_tag("no_image.jpg" , class:"image_form p-1 ", id:"link-image" , width:"200" ,height:"150") %>
+      <% end %>
+    
+      <div class="bg-light ">
+        <small class="text-black p-2" id="pop2_title"><b><%= eventpost.title %></b></small>
+      </div>
+    </div>
+  </div>
+  <% end %> 
+<% end %>
+
+
+
+<style>
+#pop2_div{
+  width: 200px;
+  height: 150px;
+  display: inline-block;
+  border: 1px solid gray; 
+  }
+
+  
+
+#event_image {/*親div*/
+  position: relative;/*相対配置*/
+  }
+
+#pop2_title {
+  position: absolute;
+  color: black;
+  background-color: whitesmoke;
+  bottom: 0;
+  right: 0;
+  left:0;
+  opacity: 0.5;
+  }
+
+</style>

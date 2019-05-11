@@ -7,7 +7,6 @@
 
 <div class="container">
 
-
   <%= render "shared/status_bar"%>
 
   <div class="row"> 
@@ -26,12 +25,17 @@
         
       </div>
       
-      <div class="col-7 ">
-        <p class="border-bottom"><b>コメント一覧</b></p>
-        <% if !@comments.nil?  %>
-              <%= render  @comments %>
-              <%= paginate  @comments, window: 2 %>
+      <div class="col-7 border-bottom">
+        <p class="border-bottom"><b>メッセージ一覧 (最大45件のメッセージ)</b></p>
+        <% if @messages.any?  %>
+          <div class="alert alert-success mt-2" role="alert" >
+              <% @messages.each do |message| %>
+                <small><i class="fas fa-exclamation-circle pr-2"></i>
+                <%= message.user.name%>さんのコメント　<%= message.content %></small></br>
+              <% end %>
+          </div>
         <% end %>
+        
       </div>
       
       <div class="col-2 border-bottom">

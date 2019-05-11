@@ -6,35 +6,45 @@
 
 <div class="container">
 
-    <h1>Users#edit</h1>
-    <p>Find me in app/views/users/edit.html.erb</p>
+    <%= render "shared/status_bar"%>
 
   <div class="row"> 
       <div class="col-3 ">
-        <p class="border-bottom">ユーザー詳細</p>
+        <p class="border-bottom"><b>ユーザープロフィール</b></p>
         
         <!--ユーザープロフィール-->
         <%= render "users/image_form" %>
         
         <!--ユーザーステータス--> 
-        <p class="border-bottom">ユーザーリンク</p>
         <%= render "users/user_status" %>
         
       </div>
       
-      <div class="col-9 border-bottom">
-        <p  class="border-bottom">ユーザー情報編集</p>
+      <div class="col-9">
+        <p  class="border-bottom"><b>プロフィール編集</b></p>
         <div class="border p-4">
           <%= form_for(@user, method: :patch ) do |f| %>
             <%= render 'shared/error_messages' , object: f.object %>
             
-            <div>
-              <div><%= f.label :ひとこと  %></div>
-                <%= f.text_area :message , class:"w-100 border p-1" %>
-            </div>
+            
+            <!--<div>-->
+            <!--  <div class="mt-2"><b><%#= f.label :名前  %></b></div>-->
+            <!--    <%#= f.text_filed :message , class:"w-100 border p-1" %>-->
+            <!--</div>-->
+            
+            <!--<div>-->
+            <!--  <div class="mt-2"><b><%#= f.label :メールアドレス  %></b></div>-->
+            <!--    <%#= f.text_filed :message , class:"w-100 border p-1" %>-->
+            <!--</div>-->
+            
             
             <div>
-              <%= f.label :住所 %>　<%= f.select :address , 
+              <div class="mt-2"><b><%= f.label :ひとこと  %></b></div>
+                <%= f.text_area :message , class:"w-100 border p-1" , "rows" => 5 , placeholder: "コメントを入力して下さい"  %>
+            </div>
+            
+            <div class="mt-2">
+              <b><%= f.label :住所 %></b>　<%= f.select :address , 
                         [["北海道","北海道"],["青森県","青森県"] ,["岩手県","岩手県"] ,["宮城県","宮城県"] ,["秋田県","秋田県"] ,["山形県","山形県"],
                         ["福島県","福島県"] ,["茨城県","茨城県"] ,["栃木県","栃木県"] ,["群馬県","群馬県"] ,["埼玉県","埼玉県"] ,["千葉県","千葉県"],
                         ["東京都","東京都"] ,["神奈川県","神奈川県"] ,["新潟県","新潟県"] ,["富山県","富山県"] ,["石川県","石川県"] ,["福井県","福井県"], 
@@ -47,12 +57,12 @@
                       %>
             </div>
             
-            <div>
-              <%= f.label :性別 %>　<%= f.select :gender , [["男性","男性"],["女性","女性"] ] %>
+            <div class="mt-2">
+              <b><%= f.label :性別 %></b>　<%= f.select :gender , [["男性","男性"],["女性","女性"] ] %>
             </div>
             
-            <div>
-              <%= f.label :誕生日 %>　<%= raw sprintf(
+            <div class="mt-2">
+              <b><%= f.label :誕生日 %></b>　<%= raw sprintf(
                                           f.date_select(
                                             :birthday,
                                             use_month_numbers: true,
@@ -65,16 +75,16 @@
             
           
             
-            <div> 
+            <div class="mt-2"> 
               <%= f.label :メールの通知, class: "checkbox " do %>
-                <span>メールでの通知を受けとる</span>
+                <span><b>メールでの通知を受けとる</b></span>
                 <spna class="text-right"><%= f.check_box :notice_email %></spna>
               <% end %>
             </div> 
             
-            <div> 
+            <div class="mt-2"> 
               <%= f.label :メッセージの通知, class: "checkbox " do %>
-                <span>メッセージの通知を受けとる</span>
+                <span><b>メッセージの通知を受けとる</b></span>
                 <spna class="text-right"><%= f.check_box :notice_message %></spna>
               <% end %>
             </div>

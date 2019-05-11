@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(10)
+    
+    # ログイン時間生成
+    # login_time(@user)
   end
 
   def new

@@ -1,6 +1,14 @@
-<div class=" " >
+<div class="mt-2" >
+
+  <!--ポストステータス-->
+  <div class="border p-2">
+    <small><b>作成日: </b><%= @post.created_at %></small></br>
+    <small><b>撮影地: </b><%= @post.location? ? " #{@post.location}": "不明" %></small></br>
+  </div>
+  
+  
   <div>
-    <div id="like_form" >
+    <div class="mt-3" id="like_form" >
     
         <!--ログインユーザーのいいねボタン-->
         <% if !current_user.nil? %>

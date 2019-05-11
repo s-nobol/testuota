@@ -7,32 +7,28 @@
 
 <div class="container">
 
-  <h1>ユーザープロフィール</h1>
-  <p>Find me in app/views/users/show.html.erb</p>
+  
+  <%= render "shared/status_bar"%>
 
   <div class="row"> 
       <div class="col-3 ">
-        <p class="border-bottom">ユーザープロフィール</p>
+        <p class="border-bottom"><b>ユーザープロフィール</b></p>
         
-        <% if @user %>
-            <!--ユーザープロフィール-->
-            <%= render @user %>
-            
-            <!--ユーザーステータス--> 
-            <p class="border-bottom">ユーザーリンク</p>
-            <%= render "users/user_status" %>
-        <% end %>
+        <!--ユーザープロフィール-->
+        <%= render @user %>
         
+        <!--ユーザーステータス-->
+        <%= render "users/user_status" %>
       </div>
       
-      <div class="col-7 border-bottom">
-        <p  class="border-bottom">投稿一覧</p>
+      <div class="col-7">
         
-        <!--コメント一覧-->
-        <%= render "users/message"%>
+        <!--メッセージフィード-->
+        <%= render "messages/message_feed"%>
         
         
         <!--記事の作成数-->
+        <p  class="border-bottom"><b>投稿一覧</b></p>
         <% if !@posts.nil? %>
             <%= render @posts %>
             <%= paginate  @posts, window: 2 %>
@@ -43,11 +39,8 @@
       </div>
       
       <div class="col-2 border-bottom">
-        <p  class="border-bottom">記事の作成</p>
-        <% if current_user?(@user) %>
-          <%= render "users/user_status2" %>
-        <% end %>
-
+        <%= render "users/user_status2" %>
       </div>
   </div>
 </div>
+

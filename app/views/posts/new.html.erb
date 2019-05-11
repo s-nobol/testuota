@@ -5,23 +5,24 @@
 <%= render "layouts/main_bar"%>
 
 <div class="container">
-  <h1>鉄道写真投稿ページ</h1>
+
+  <%= render "shared/status_bar"%>
+
   <div class="row"> 
       <div class="col-3 ">
-        <p class="border-bottom">ユーザー詳細</p>
+        <p class="border-bottom"><b>ユーザープロフィール</b></p>
         
         <!--ユーザープロフィール-->
         <% @user = current_user %>
         <%= render @user %>
         
         <!--ユーザーステータス--> 
-        <p class="border-bottom">ユーザーリンク</p>
         <%= render "users/user_status" %>
         
       </div>
       
-      <div class="col-8 border-bottom">
-        <p  class="border-bottom">投稿新規作成</p>
+      <div class="col-8 ">
+        <p  class="border-bottom"><b>投稿新規作成</b></p>
           <!--投稿フォーム-->
           <%= render "posts/post_form" %>
       </div>

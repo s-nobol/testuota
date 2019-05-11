@@ -7,30 +7,35 @@
 
 <div class="container">
 
+
+  <%= render "shared/status_bar"%>
+
   <div class="row"> 
       <div class="col-3 ">
-        <p class="border-bottom">ユーザー詳細</p>
+        <p class="border-bottom"><b>ユーザープロフィール</b></p>
         
         <% if @user %>
             <!--ユーザープロフィール-->
             <%= render @user %>
             
-            <!--ユーザーステータス--> 
-            <p class="border-bottom">ユーザーリンク</p>
+            <!--ユーザーステータス-->
             <%= render "users/user_status" %>
         <% end %>
         
       </div>
       
-      <div class="col-9 border-bottom">
-        <p  class="border-bottom">いいね一覧</p>
+      <div class="col-7 ">
+        <p  class="border-bottom"><b>いいね一覧</b></p>
         <% if @posts.any?  %>
               <%= render  @posts %>
               <%= paginate  @posts, window: 2 %>
         <% else %>
           <p>まだいいねをしてる記事がありません</p>
         <% end %>
-
+      </div>
+      
+      <div class="col-2 border-bottom">
+        <%= render "users/user_status2" %>
       </div>
   </div>
 </div>

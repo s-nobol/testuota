@@ -18,15 +18,14 @@
         <%= render "static_pages/popular" %>
       </div>
         
-      <div class="col-7 border-bottom">
-        
+      <div class="col-7 ">
+      
           <!--記事表示-->
-          <p class="border-bottom">最新の記事</p>
-        　
-        　<!--タイトル-->
-        　<%= render @eventpost %>
-        　
-        　
+          <!--<p class="border-bottom">最新の記事</p>-->
+          
+          <!--タイトル-->
+          <%= render @eventpost %>
+
         　<!--メイン-->
         　<%= @eventpost.content.html_safe %>
         　
@@ -39,15 +38,14 @@
         　<h4 class=" border-left-insert p-2"><b>おすすめ記事一覧</b></h4>
         　<%= render "static_pages/recommend"%>
         　
-        　<!--人気記事一覧-->
-        　<h4 class=" border-left-insert p-2"><b>人気記事ランキング</b></h4>
-        　<p class="text-danger">保留!!今後考える</p>
-        　<%#= render "static_pages/popular"%>
+          <!--人気記事一覧-->
+          <h4 class=" border-left-insert p-2"><b>人気記事ランキング</b></h4>
+          <%= render "static_pages/popular2"%>
         　
           <!--コメント-->
-          <div class="">
+          <div class="mt-5">
             <h4 class="bg-light border-left-insert p-2"><b>コメント</b></h4>
-            <div>記事と関係のないコメント、連投は削除規制対象です</div>      　
+            <div>※記事と関係のないコメント、連投は削除規制対象です</div>      　
             <%= render @eventpost_comments  %>
             　
             <!--コメントフォーム-->

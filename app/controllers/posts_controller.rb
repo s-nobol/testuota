@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :post_correct_user,   only: [:edit, :update, :destroy]
     
   def index
+    @postscount = Post.all.count
     @posts = Post.all.page(params[:page]).per(30)
     @index = "text-primary"
   end
@@ -70,14 +71,16 @@ class PostsController < ApplicationController
   def search
     @search = params[:search]
     # @posts = Post.post_search(@search)
+    @postscount = Post.where(['title LIKE ?', "%#{@search}%"]).count
     @posts = Post.where(['title LIKE ?', "%#{@search}%"]).page(params[:page]).per(30)
   end
   
   # 人気一覧ページ
   def popular
-    @posts = Post.popular
+    likes_ids = Like.group(:post_id).order(Arel.sql('count(post_id) desc')).limit(50).pluck(:post_id)
+    @postscount = Post.where("id IN (?)", likes_ids ).count
+    @posts = Post.where("id IN (?)", likes_ids ).page(params[:page]).per(30)
     @popular = "text-primary"
-    
   end
   
   private

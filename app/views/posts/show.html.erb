@@ -4,13 +4,13 @@
 <!--メインバー-->
 <%= render "layouts/main_bar"%>
 
-<div class="container">
-  <!--<h1>鉄道写真投稿ページ</h1>-->
+<div class="container">          
+  
+  <%= render "shared/status_bar"%>
+
   <div class="row"> 
     <div class="col-9 border-bottom">
-                
-          <p  class="border-bottom">投稿画像</p>
-          
+
           <nav class="navbar navbar-light pr-5">
           
             <!--タイトル-->
@@ -66,8 +66,6 @@
       </div>
   
       <div class="col-3 ">
-        <p class="border-bottom">画像詳細</p>
-        
         
         <h3 class="text-white"><b><%= @post.title %></b></h3>
         
@@ -75,12 +73,7 @@
         <% @user = @post.user %>
         <%= render @user %>
         
-        <!--ユーザーステータス-->
-        <!--<p class="border-bottom">ユーザーリンク</p>-->
-        <%#= render "users/user_status" %>
-        
         <!--ポストステータス-->
-        <p class="border-bottom">ポストステータス</p>
         <%= render "posts/post_status" %>
         
         

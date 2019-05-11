@@ -6,35 +6,32 @@
 <%= render "layouts/main_bar"%>
 
 
+
 <div class="container">
 
   <h1>StaticPages#home</h1>
   <p>Find me in app/views/static_pages/home.html.erb</p>
+  <!--ヘッドライン-->
+  <%#= render "static_pages/headline"%>
+  
 
   <div class="row"> 
+  
       <div class="col-2 ">
-      
-        <p class="border-bottom">人気の記事</p>
-        
-        <div class="bg-light">
-          <% 10.times do %>
-            <%= render "static_pages/feed" %>
-          <% end %>
-        </div>
-        
+        <p class="bg-black text-white p-1">人気の記事</p>
+        <%= render "static_pages/popular" %>
       </div>
       
-      <div class="col-7 border-bottom">
+      <div class="col-7 ">
       
         <!--最新の記事-->
-        <p  class="border-bottom">最新の記事</p>
+        <p  class="bg-black text-white p-1">最新の記事</p>
         
         <% if @eventposts.any? %>
         　<%= render @eventposts %>
         　<%= paginate @eventposts, window: 2 %>
-
         <% else %>
-          <p id ="search_post"><b>記事がありません</b></p>
+          <p><b>まだ記事がありません</b></p>
       　<% end %>
       　
       </div>
@@ -43,17 +40,7 @@
       
         <!--管理人プロフィール-->
         <div class="bg-black text-white p-1">管理人</div>
-      　<div class= "p-0">
-        　<span class="text-center">管理人⇒あいち
-          修行中⇒Python
-          ひとこと⇒こんばんは！修行してます。
-          なかよくしてもらいたいです。
-          
-          つぶやき
-          
-          お魚になりたい
-        　</span>
-      　</div>
+        <%= render "static_pages/admin"%>
       　
         <!--記事の検索    -->
       　<div class= "">
@@ -75,7 +62,7 @@
       　
       　<!--アーカイブ-->
       　<div>
-          <%= render "static_pages/archives"%>
+          <%#= render "static_pages/archives"%>
       　</div>
       　
       </div>

@@ -66,5 +66,4 @@ class SigunupUserTest < ActionDispatch::IntegrationTest
     assert_not flash.empty? , "フラッシュ = #{flash[:success]}"
   end
   
-  
 end

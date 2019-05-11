@@ -65,6 +65,13 @@ module SessionsHelper
     end
   end
   
+  # 現在時間をクッキーに記録
+  def login_time(user)
+    if user == current_user
+      user.create_login_time
+    end
+  end
+  
   # 記憶したURL (もしくはデフォルト値) にリダイレクト
   # def redirect_back_or(default)
   #   redirect_to(session[:url] || default)

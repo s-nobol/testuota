@@ -4,17 +4,17 @@
 
   <%= link_to eventpost do %>
         <div class="gb-dark p-1" id="pop_div">
-          <div class=" border-black" id="event_image">
+          <div class="border-black" id="event_image">
             <!--// 画像があるときは画像を表示する-->
-            <small class="s-text"><b>コメント<%= eventpost.eventpost_comments.count %></b></small>
-            <%# if eventpost.image.present? %>
-              <%#= image_tag(eventpost.image.url , class:"image_form rounded-circle" ,id:"icon") %>
-            <%# else %>
-              <%= image_tag("no_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"80") %>
-            <%# end %>
+            <% if eventpost.image.present? %>
+              <%= image_tag(eventpost.image.url , class:"image_form" ,id:"link-image", width:"150" ,height:"120") %>
+            <% else %>
+              <%= image_tag("no_image.jpg" , class:"image_form" ,id:"link-image", width:"150" ,height:"120") %>
+            <% end %>
             
+            <small class="s-text"><b>コメント<%= eventpost.eventpost_comments.count %></b></small>
             <div class="bg-black">
-              <small class="text-white"><b><%= eventpost.title %></b></small>
+              <small class="p-1" id="pop1_title" ><b><%= eventpost.title %></b></small>
             </div>
           </div>
         </div>
@@ -36,8 +36,14 @@
   top: 0;
   right: 0;
   }
-
-#event_image img {
-  width: 100%;
+  
+  #pop1_title {
+  position: absolute;
+  color: white;
+  background-color: black;
+  bottom: 0;
+  right: 0;
+  left:0;
   }
+
 </style>

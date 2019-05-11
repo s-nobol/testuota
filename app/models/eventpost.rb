@@ -21,7 +21,7 @@ class Eventpost < ApplicationRecord
   end
   
   def self.popular_eventposts_2
-    Eventpost.find(EventpostComment.group(:eventpost_id).order(Arel.sql('count(eventpost_id) desc')).limit(5).pluck(:eventpost_id))
+    Eventpost.find(EventpostComment.group(:eventpost_id).order(Arel.sql('count(eventpost_id) desc')).limit(6).pluck(:eventpost_id))
   end
   
 
@@ -35,7 +35,7 @@ class Eventpost < ApplicationRecord
   def self.archives
     # Railsでブログアプリに月別アーカイブを導入(参考)
     if Rails.env.production?
-      Eventpost.group("date_part('month' ,created_at)").count
+      Eventpost.group("date_part('year' ,created_at)","date_part('month' ,created_at)").count
       #うまくいったっぽい
     else
       Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count

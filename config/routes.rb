@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   
-   # 企業ポリシーページ
+  # 企業ポリシーページ
   get 'static_pages/home'
   # get 'static_pages/about'
   # get 'static_pages/help'
@@ -33,15 +33,18 @@ Rails.application.routes.draw do
   
   # ホーム
   root "static_pages#home"
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users 
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :posts
   resources :comments,            only: [:show, :create, :destroy]
   resources :likes,               only: [ :show, :create, :destroy]
+  resources :messages, only: [:show]
   resources :eventposts
   resources :categorys, only: [:show, :new, :create, :destroy]
   resources :eventpost_comments, only: [:show, :create, :destroy]
+
 end
 
 
@@ -117,16 +120,12 @@ end
 # rails g integration_test eventpost_comment
 
 
+# メッセージfeed作成
+# rails g controller Messages show
+
 # ここから！！！！！！
-# post検索機能作成
-# post/popular.html作成(修正)
-# Usershow　Post＿Createボタン修正
-
-# メッセージ通知機能作成
-# とりあえずクリア（メッセージが正しく表示されているかテストする）
-
 # 全体のView修正(改)
-
+# popular2修正
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string
 # rails g controller Locationposts new show edit index
