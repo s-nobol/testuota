@@ -1,4 +1,6 @@
 
+<% 5.times do |n| %>
+
 <!--人気の記事一覧-->
 <div class=" p-1">
   <div class=" border-black" id="event_image">
@@ -7,7 +9,7 @@
     <%# if user.image.present? %>
       <%#= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon") %>
     <%# else %>
-      <%= image_tag("no_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"80") %>
+      <%= image_tag("no_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"100") %>
     <%# end %>
     
     <div class="bg-black">
@@ -15,7 +17,7 @@
     </div>
   </div>
 </div>
-
+<% end %>
 <style>
 #event_image {/*親div*/
   position: relative;/*相対配置*/

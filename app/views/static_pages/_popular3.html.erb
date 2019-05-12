@@ -1,0 +1,24 @@
+<!--人気記事一覧-->
+<% @populer = Eventpost.popular_eventposts_2 %>
+<ul class="list-unstyled">
+  <% @populer.each do |eventpost| %>
+  
+    <%= link_to eventpost, class:"pop2_link ", id:"link-decoration" do %>
+      <li class="media">
+      
+        <!--画像-->
+        <% if eventpost.image.present? %>
+          <%= image_tag(eventpost.image.url , class:"image_form  p-1 ", id:"link-image" , width:"80" ,height:"80") %>
+        <% else %>
+          <%= image_tag("no_image.jpg" , class:"image_form p-1 ", id:"link-image" , width:"80" ,height:"80") %>
+        <% end %>
+        
+        <!--タイトル-->
+        <div class="media-body">
+          <span class="text-dark"><%= eventpost.title %></span>
+        </div>
+      </li>
+    <% end %>
+    
+  <% end %>
+</ul>

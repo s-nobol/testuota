@@ -4,7 +4,8 @@
     <title>PostApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag 'favicon.ico' %>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -22,7 +23,7 @@
     <%= render "layouts/header" %>
     
     <!--フラッシュ-->
-    <div class="container">
+    <div class="conteiner">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %> alert-dismissible fade show" role="alert"><%= message %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">

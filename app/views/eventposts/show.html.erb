@@ -6,23 +6,34 @@
 <%= render "layouts/main_bar"%>
 
 
-<div class="container ">
+<div class="conteiner ">
 
-  <h1>Eventposts#show</h1>
-  <p>Find me in app/views/eventposts/show.html.erb</p>
-  
+  <!--ヘッドライン-->
+  <div class="mt-2 mb-2">
+    <%= render "static_pages/popular2" %>
+  </div>
+
   <div class="row"> 
   
-      <div class="col-2 ">
+      <!--サイドバー-->
+      <div class="col-2 pr-1">
+      
+        <!--blogs-->
+        <%= render "static_pages/blogs" %>
         <p class="bg-black text-white p-1">人気の記事</p>
         <%= render "static_pages/popular" %>
       </div>
         
-      <div class="col-7 ">
-      
+      <!--メイン-->
+      <div class="col-7 pl-2 pr-0">
+        
+          <!--ヘッドライン-->
+          <%= render "static_pages/headline" %>
+          
           <!--記事表示-->
           <!--<p class="border-bottom">最新の記事</p>-->
-          
+          <div class="mt-3">
+          </div>
           <!--タイトル-->
           <%= render @eventpost %>
 
@@ -53,35 +64,34 @@
           </div>
       </div>
   
-      <div class="col-3 pr-3 pl-3">
+      <!--サイドバー-->
+      <div class="col-3 pr-3 pl-3 col-md-offset-1">
+      
+        <!--管理人プロフィール-->
+        <div class="bg-black text-white p-1">管理人</div>
+        <%= render "static_pages/admin"%>
         
-          <!--管理人プロフィール-->
-          <div class="bg-black text-white p-1">管理人</div>
-          <%= render "static_pages/admin"%>
-        　
-          <!--記事の検索    -->
-        　<div class= "">
-          　<%= render "static_pages/search_form"%>
-        　</div>
-          　
-          <!--人気記事一覧　-->
-          <p class="bg-black text-white p-1">人気の記事</p>
-          <div class="bg-light">
-            <% 5.times do %>
-              <%= render "static_pages/feed" %>
-            <% end %>
-          </div>
-          
-          <!--カテゴリー-->
-          <div>
-            <%= render "categorys/categorys"%>
-        　</div>
-        　
-        　<!--アーカイブ-->
-        　<div>
-            <%#= render "static_pages/archives"%>
-        　</div>
+        <!--記事の検索-->
+        <div class= "">
+          <%= render "static_pages/search_form"%>
+        </div>
+        
+        <!--人気記事一覧　-->
+        <p class="bg-black text-white p-1 mt-3">人気の記事</p>
+        <div class="">
+          <%#= render "static_pages/popular3" %>
+          <%= render "static_pages/feed" %>
+        </div>
+
+        <!--カテゴリー-->
+        <div>
+          <%= render "categorys/categorys"%>
+      　</div>
       　
+      　<!--アーカイブ-->
+      　<div>
+          <%= render "static_pages/archives"%>
+      　</div>
       </div>
       
     </div>

@@ -123,8 +123,7 @@ end
 # rails g controller Messages show
 
 # ここから！！！！！！
-# user.email unique
-# archiveの修正
+# AWS_s3_uploader作成
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string
