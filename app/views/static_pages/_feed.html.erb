@@ -1,37 +1,35 @@
-
-<% 5.times do |n| %>
-
-<!--人気の記事一覧-->
-<div class=" p-1">
-  <div class=" border-black" id="event_image">
-    <!--// 画像があるときは画像を表示する-->
-    <small class="s-text"><b>コメント15</b></small>
-    <%# if user.image.present? %>
-      <%#= image_tag(user.image.url , class:"image_form rounded-circle" ,id:"icon") %>
-    <%# else %>
-      <%= image_tag("no_image.jpg" , class:"image_form" ,id:"icon", width:"130" ,height:"100") %>
-    <%# end %>
-    
-    <div class="bg-black">
-      <small class="text-white"><b>これはテスト記事</b></small>
+<% @feeds = Eventpost.popular_eventposts_2 %>
+<% @feeds.each do |eventpost| %>
+  <!--人気の記事一覧-->
+  <div class=" p-1">
+    <div class=" border-black" id="event_image">
+      
+      <!--// 画像があるときは画像を表示する-->
+      <% if eventpost.image.present? %>
+        <%= image_tag(eventpost.image.url , class:"image_form" ,id:"link-image", width:"100%" ,height:"140") %>
+      <% else %>
+        <%= image_tag("no_image.jpg" , class:"image_form" ,id:"link-image", width:"100%" ,height:"140") %>
+      <% end %>
+            
+      
+      <div class="bg-black feed-title w-100">
+        <small class="text-white "><b><%= eventpost.title %></b></small>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
+
 <style>
 #event_image {/*親div*/
   position: relative;/*相対配置*/
   }
 
-#event_image .s-text {
+#event_image .feed-title {
   position: absolute;/*絶対配置*/
   color: white;/*文字は白に*/
   background-color: black;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 0;
   }
 
-#event_image img {
-  width: 100%;
-  }
 </style>

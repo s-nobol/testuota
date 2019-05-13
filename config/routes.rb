@@ -121,9 +121,9 @@ end
 
 # メッセージfeed作成
 # rails g controller Messages show
+# AWS_s3_uploader作成
 
 # ここから！！！！！！
-# AWS_s3_uploader作成
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string

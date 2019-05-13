@@ -58,7 +58,7 @@ class CommentMeilerTest < ActionDispatch::IntegrationTest
     get post_path(@post)
     assert_template "posts/show"
     
-    # 無効なコメント送信
+    # 無効なコメント送信///////////////////
     assert_no_difference "Comment.count" do
       post comments_path params: { post_id: @post.id,  comment: { content: ""} }
     end

@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
+    @other_posts = @post.user.posts.limit(5)
     @comments = @post.comments.page(params[:page]).per(10)
     @comment = Comment.new
   end 

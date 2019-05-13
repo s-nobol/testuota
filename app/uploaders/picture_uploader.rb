@@ -5,7 +5,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick  
   # サムネイル作成
   version :thumb do
-    process :resize_to_fill => [144, 98]
+    process :resize_to_fill => [400,266]
   end
 
   # Choose what kind of storage to use for this uploader:
