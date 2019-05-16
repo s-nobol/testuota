@@ -13,7 +13,7 @@
         <%= image_tag("no_image.jpg" , class:"image_form p-1 ", id:"link-image" , width:"200" ,height:"150") %>
       <% end %>
     
-      <div class="bg-light ">
+      <div class="bg-light " id="eventpostpost_title">
         <small class="text-black p-2" id="pop2_title"><b><%= eventpost.title %></b></small>
       </div>
     </div>
@@ -45,6 +45,8 @@
   right: 0;
   left:0;
   opacity: 0.5;
+  overflow: hidden;
+  max-height: 50px;
   }
 
 </style>

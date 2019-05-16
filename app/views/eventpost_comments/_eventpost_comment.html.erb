@@ -1,11 +1,11 @@
 <!--コメント一覧フォーム-->
-<div class="border-top-dashed p-2">
+<div class="border-top-dashed p-2 mb-1">
   
     <!--ユーザー名-->
     <div class="p-1">
       
         <!--コメントID-->
-        <span><%= eventpost_comment.id %></span>
+        <span><%#= eventpost_comment.id %><%= @i +=1 %></span>
         
         <!--名前-->
         <span class="text-success pl-2">
@@ -30,8 +30,8 @@
     <!--コメント-->
     <div class="p-1">
       <!--削除予定-->
-      <span>eventpost_id<%= eventpost_comment.eventpost_id %></span>
-      <%= eventpost_comment.content %>
+      <!--<span>eventpost_id<%#= eventpost_comment.eventpost_id %></span>-->
+      <span class="pl-3"><%= eventpost_comment.content %></span>
     </div>
 
 </div>

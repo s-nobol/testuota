@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update , :destroy]
+  before_action :valid_image, only: [:create]
   before_action :post_correct_user,   only: [:edit, :update, :destroy]
     
   def index
@@ -91,6 +92,15 @@ class PostsController < ApplicationController
     end
     def edit_params
       params.require(:post).permit(:title, :content, :location)
+    end
+    
+    # 画像ファイルがあるか検証
+    def valid_image
+      unless params[:post][:picture]
+        flash.now[:danger] = "画像ファイルが挿入されていません"
+         @post = current_user.posts.build(post_params)
+        render "new"
+      end
     end
     
        # 正しいユーザーかどうか確認

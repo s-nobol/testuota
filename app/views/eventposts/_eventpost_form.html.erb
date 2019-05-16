@@ -1,6 +1,7 @@
 <!--まとめ記事作成サイト-->
 <a href="https://2mtmex.com/" >まとめくす </a>
 
+
       <%= form_for(@eventpost) do |f| %>
 
         <%= render 'shared/error_messages' , object: f.object %>
@@ -11,12 +12,12 @@
         </div>
          
         <div class="mt-3"> 
-          <div><b><%= f.label :サブタイトル %></b></div>
+          <div><b><%= f.label :サブタイトル %></b> <small>(文字のサイズは4)</small></div>
           <%= f.text_area :sub_title, class: 'border w-100 p-1', id:"sub_title", "rows" => 8 , placeholder: "記事を挿入して下さい" %>
         </div>
         
         <div class="mt-3">
-          <div><b><%= f.label :記事の内容 %></b></div>
+          <div><b><%= f.label :記事の内容 %></b> <small>(文字のサイズは4)</small></div>
           <%= f.text_area :content, class: 'border w-100 p-1', id:"content", "rows" => 15 , placeholder: "記事を挿入して下さい" %>
         </div>
         

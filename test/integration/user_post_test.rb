@@ -45,8 +45,9 @@ class UserPostTest < ActionDispatch::IntegrationTest
     # 有効な記事を作成
     title = "test_title"
     content = "test_content"
+    image = "test.jpg"
     assert_difference "Post.count" , 1 do
-      post posts_path params: { post: {title: title, content: content} }
+      post posts_path params: { post: {picture: image,title: title, content: content} }
     end
     # assert_redirected_to @post
     follow_redirect!

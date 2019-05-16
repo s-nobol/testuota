@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 400 }
-  # validatea :picture, presence: true
+  # validates :picture, presence: true
   validate  :picture_size
   
   # 検索
