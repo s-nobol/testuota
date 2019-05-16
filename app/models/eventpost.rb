@@ -24,6 +24,10 @@ class Eventpost < ApplicationRecord
     Eventpost.find(EventpostComment.group(:eventpost_id).order(Arel.sql('count(eventpost_id) desc')).limit(6).pluck(:eventpost_id))
   end
   
+  def self.popular_eventposts_3
+    Eventpost.find(EventpostComment.group(:eventpost_id).order(Arel.sql('count(eventpost_id) asc')).limit(6).pluck(:eventpost_id))
+  end
+  
 
   # 検索
   def self.search(search)
@@ -41,11 +45,6 @@ class Eventpost < ApplicationRecord
       Eventpost.group("strftime('%Y%m', created_at)").order(Arel.sql("strftime('%Y%m', created_at) desc")).count
     end
   end
-  # アーカイブ出力結果
-  # 時間[2019.0, 5.0]
-  # カウント5
-  # うまくいった計算式
-  
   private
 
     # アップロードされた画像のサイズをバリデーションする
@@ -55,17 +54,3 @@ class Eventpost < ApplicationRecord
       end
     end
 end
-
-# ExampleLog.group("date_part('hour', timezone('Australia/Sydney', example_logs.created_at))").count7
-# where({blog_id: blog.id}).group_by_month(:created_at, format: "%Y年%b", reverse: true, series: false).count
-# Eventpost.group("date_part('month' ,created_at)").count
-# Eventpost.group('date("%y",created_at)').count
-# dateを正規表現で変換してみる
-# => {"2019-05-07"=>5} 考えてみる
-# select 
-# date_part('year', created) as year, 
-# date_part('month', created) as month,
-# sum(price) as sum_price
-# from sales
-# group by year,month
-# order by year,month;

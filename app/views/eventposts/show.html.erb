@@ -10,7 +10,7 @@
 
   <!--ヘッドライン-->
   <div class="mt-2 mb-2">
-    <%= render "static_pages/popular2" %>
+    <%= render "static_pages/popular3" %>
   </div>
 
   <div class="row"> 
@@ -38,7 +38,9 @@
           <%= render @eventpost %>
 
         　<!--メイン-->
-        　<%= @eventpost.content.html_safe %>
+        　<div class="pr-3 pl-3">
+          　<%= @eventpost.content.html_safe %>
+        　</div>
         　
         　<!--シェア--> 　
         　<%#= render "eventposts/share_form"%>
@@ -96,3 +98,4 @@
       
     </div>
 </div>
+

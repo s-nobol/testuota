@@ -7,7 +7,7 @@
     <!--ポストステータス-->
     <div class="bg-light p-2">
       <small><i class="fas fa-clock mr-2"></i>作成時間: <%= eventpost.created_at %></small>
-      <small><i class="fas fa-folder-open mr-2"></i>カテゴリ<%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-primary" %></small>
+      <small><i class="fas fa-folder-open mr-2"></i>カテゴリ<%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-dark" %></small>
       
       <% if admin_user %>
         <%= link_to "編集", edit_eventpost_path(eventpost), class:"text-success" %>
@@ -15,23 +15,31 @@
       <% end %>　
     </div> 
     
-    <!--シェア-->
-    <!--20.msかかる-->
+    <!--シェア(20.ms)-->
     <%#= render "eventposts/share_form", eventpost: eventpost %>
     
+    <div class="pt-3 pr-3 pl-3">
     
-    <!--サブタイトル-->
-    <div class="mt-3">
-      <%= eventpost.sub_title.html_safe %>
+      <!--画像-->
+      <% if eventpost.image.present? %>
+          <%= image_tag(eventpost.image.url , class:"image_form", width:"550" ) %>
+        <% else %>
+          <%= image_tag("no_image.jpg" , class:"image_form", width:"550" ) %>
+      <% end %>
+      
+      <!--サブタイトル-->
+      <div class="mt-3">
+        <%= eventpost.sub_title.html_safe %>
+      </div>
+      
+      <!--もっと読む-->
+      <% unless controller_name == "eventposts"%>
+        <%= link_to eventpost do %>
+          <div class="bg-light text-center p-2 mb-5">
+            <h5 class="text-dark"><b>もっと読む</b></h5>
+          </div>
+        <% end %>
+      <% end %>
     </div>
     
-    <!--もっと読む-->
-    
-    <% unless controller.action_name == "show"%>
-      <%= link_to eventpost do %>
-        <div class="bg-light text-center p-2">
-          <h5 class="text-dark"><b>もっと読む</b></h5>
-        </div>
-      <% end %>
-    <% end %>
 </div>

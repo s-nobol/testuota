@@ -6,8 +6,8 @@
         <div class="gb-dark p-1" id="pop_div">
           <div class="border-black" id="event_image">
             <!--// 画像があるときは画像を表示する-->
-            <% if eventpost.image.present? %>
-              <%= image_tag(eventpost.image.url , class:"image_form" ,id:"link-image", width:"100%" ,height:"130") %>
+            <% if eventpost.image.thumb.present? %>
+              <%= image_tag(eventpost.image.url(:thumb) , class:"image_form" ,id:"link-image", width:"100%" ,height:"130") %>
             <% else %>
               <%= image_tag("no_image.jpg" , class:"image_form" ,id:"link-image", width:"100%" ,height:"130") %>
             <% end %>

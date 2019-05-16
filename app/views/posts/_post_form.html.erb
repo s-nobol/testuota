@@ -2,26 +2,24 @@
   <div>
      <%= form_for(@post) do |f| %>
         
-        
-            <% if @post.picture.present? %>
+          <% if @post.picture.present? %>
               <%= image_tag(@post.picture.url , class:"img-fluid", id:"link-image" ) %>
-            <% else %>
-            
-            
+          <% else %>
             
               <div class="image_form rounded-circle text-center mx-auto mt-4" id="picture_field" onClick="$('#file').click()" >
             
-              <%= image_tag("no_image.jpg", class:"img-fluid", id:"link-image" )%>
-              
-                  <!--スピナー-->
-               <div class="pt-4 bg-light" style="display: none;" role="status" id="spinner">
-                <span class="spinner-border text-secondary" ></span>
-              </div>
+                <%= image_tag("no_image.jpg", class:"img-fluid", id:"link-image" )%>
+                
+                    <!--スピナー-->
+                <div class="pt-4 bg-light" style="display: none;" role="status" id="spinner">
+                  <span class="spinner-border text-secondary" ></span>
+                </div>
               </div>
                   
             <%= f.file_field :picture, class: "image", style: "display:none;", id: "file" ,accept: 'image/jpeg,image/gif,image/png' %>
 
-            <% end %>
+          <% end %>
+            
             
             
         <!--エラーメッセージ-->
@@ -50,6 +48,12 @@
   
   </div>
 </div>
+
+<style>
+{
+ max-height: 600px;
+ }
+</style>
 
 
 <!--【画像アップロード】file_fieldデザイン変更＋画像選択時にプレビュー表示する方法-->
@@ -92,7 +96,7 @@
                 src: e.target.result,
                 width: "100%",
                 // height: "",
-                class: "preview image_form ",
+                class: "preview image_form",
                 title: file.name
               }));
             };

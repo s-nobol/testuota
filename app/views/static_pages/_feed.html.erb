@@ -1,22 +1,27 @@
-<% @feeds = Eventpost.popular_eventposts_2 %>
+<% @feeds = Eventpost.popular_eventposts_3 %>
 <% @feeds.each do |eventpost| %>
-  <!--人気の記事一覧-->
-  <div class=" p-1">
-    <div class=" border-black" id="event_image">
-      
-      <!--// 画像があるときは画像を表示する-->
-      <% if eventpost.image.present? %>
-        <%= image_tag(eventpost.image.url , class:"image_form" ,id:"link-image", width:"100%" ,height:"140") %>
-      <% else %>
-        <%= image_tag("no_image.jpg" , class:"image_form" ,id:"link-image", width:"100%" ,height:"140") %>
-      <% end %>
-            
-      
-      <div class="bg-black feed-title w-100">
-        <small class="text-white "><b><%= eventpost.title %></b></small>
+
+  <%= link_to eventpost do %>
+  
+    <!--人気の記事一覧-->
+    <div class=" p-1">
+      <div class=" border-black" id="event_image">
+        
+        <!--// 画像があるときは画像を表示する-->
+        <% if eventpost.image.thumb.present? %>
+          <%= image_tag(eventpost.image.url(:thumb), class:"image_form" ,id:"link-image", width:"100%" ,height:"170") %>
+        <% else %>
+          <%= image_tag("no_image.jpg" , class:"image_form" ,id:"link-image", width:"100%" ,height:"170") %>
+        <% end %>
+              
+        
+        <div class="bg-black feed-title w-100 p-1">
+          <small class="text-white "><b><%= eventpost.title %></b></small>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+  
 <% end %>
 
 <style>
@@ -31,5 +36,4 @@
   bottom: 0;
   left: 0;
   }
-
 </style>
