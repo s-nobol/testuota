@@ -39,13 +39,18 @@
         　<!--メイン-->
         　<div class="pr-3 pl-3">
           　<%= @eventpost.content.html_safe %>
-        　</div>
-        　
-        　<!--シェア--> 　
-        　<%#= render "eventposts/share_form"%>
-        　<%= render "eventposts/share_form", eventpost: @eventpost %>
+          </div>
+          
+          <!--転載元-->
+          <div class="text-secondary text-right mt-3 mb-3">
+            <% if @eventpost.reproduction_url %>
+              <span>引用元: <%= @eventpost.reproduction_url %></span>
+            <% end %>
+          </div>
 
-        　
+          <!--シェア-->
+          <%= render "eventposts/share_form", eventpost: @eventpost %>
+
         　<!--おすすめ-->
         　<h4 class=" border-left-insert p-2"><b>おすすめ記事一覧</b></h4>
         　<%= render "static_pages/recommend"%>

@@ -3,6 +3,7 @@ class Eventpost < ApplicationRecord
   has_many :eventpost_comments
   belongs_to :user
   belongs_to :category
+  # default_scope -> { order(created_at: :desc) }
   mount_uploader :image, EventpostImageUploader 
   validates :title, presence: true
   validates :sub_title, presence: true
@@ -31,8 +32,8 @@ class Eventpost < ApplicationRecord
 
   # 検索
   def self.search(search)
-    return Eventpost.all unless search
-    Eventpost.where(['title LIKE ?', "%#{search}%"])
+    return Eventpost.all.order(created_at: :desc) unless search
+    Eventpost.where(['title LIKE ?', "%#{search}%"]).order(created_at: :desc)
   end
   
   # アーカイブ

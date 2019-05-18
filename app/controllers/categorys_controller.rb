@@ -34,7 +34,7 @@ class CategorysController < ApplicationController
   
   def show
     @category = Category.find(params[:id])
-    @eventposts = @category.eventposts.page(params[:page]).per(6)
+    @eventposts = @category.eventposts.order(created_at: :desc).page(params[:page]).per(6)
   end
   
   private

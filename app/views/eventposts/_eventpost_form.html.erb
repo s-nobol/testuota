@@ -21,11 +21,21 @@
           <%= f.text_area :content, class: 'border w-100 p-1', id:"content", "rows" => 15 , placeholder: "記事を挿入して下さい" %>
         </div>
         
+        <!--転載元-->
+        <div class="mt-3">
+          <div><b><%= f.label :転載元 %></b></div>
+          <%= f.text_field  :reproduction_url, class:"border w-100 p-1", placeholder: "まとめ記事のURL"  %>
+        </div>
         
+        <!--カテゴリ一覧-->
         <% @category = Category.all %>
-        <div>
+        <div  class="mt-3">
           <div><b><%= f.label :カテゴリー %></b></div>
           <%= f.collection_select :category_id, @category, :id, :name  %>
+        </div>
+        
+        <div class="mt-3">
+         <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
         </div>
         
         <!--プレビュー-->
@@ -33,7 +43,6 @@
           <%#= f.submit "作成", class: "btn btn-dark" %>
           <div class="btn btn-danger " id="preview">プレビュー</div>
         </div>
-         <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
         
         <div class="text-right mt-3">
           <%= f.submit "作成", class: "btn btn-dark" %>

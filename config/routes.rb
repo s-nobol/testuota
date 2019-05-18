@@ -124,6 +124,9 @@ end
 # AWS_s3_uploader作成
 
 # ここから！！！！！！
+# Post/showでViewカウント非表示
+# Event_post並び替え.order(created_at: :desc)をhome. events/how searchに追加
+# EventposTに転載情報追加
 
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string

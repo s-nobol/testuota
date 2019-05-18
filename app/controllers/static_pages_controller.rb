@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   
   def home
     # 最新の記事
-    @eventposts = Eventpost.page(params[:page]).per(6)
+    @eventposts = Eventpost.order(created_at: :desc).page(params[:page]).per(6)
   end
   
   def search

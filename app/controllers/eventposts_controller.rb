@@ -64,7 +64,7 @@ class EventpostsController < ApplicationController
   private
   
     def eventposts_params
-      params.require(:eventpost).permit(:title, :sub_title, :content, :category_id, :image)
+      params.require(:eventpost).permit(:title, :sub_title, :content, :category_id, :image, :reproduction_url)
     end  
   
     # # 管理者ユーザーのみがパスできる
