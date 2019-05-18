@@ -7,8 +7,13 @@
     <!--ポストステータス-->
     <div class="bg-light p-2">
       <small><i class="fas fa-clock mr-2"></i>作成時間: <%= eventpost.created_at %></small>
-      <small><i class="fas fa-folder-open mr-2"></i>カテゴリ<%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-dark" %></small>
       
+      <% if eventpost.category %> 
+      <small><i class="fas fa-folder-open mr-2"></i>カテゴリ
+      <%= link_to eventpost.category.name, category_path(eventpost.category), class:"text-dark" %>
+      </small>
+      <% end %>
+     
       <% if admin_user %>
         <%= link_to "編集", edit_eventpost_path(eventpost), class:"text-success" %>
         <%= link_to "削除", eventpost_path(eventpost), method: :delete, class:"text-danger" %>

@@ -38,6 +38,9 @@
                   <!--<li><%= link_to "投稿一覧", posts_path ,class:"dropdown-item" %></li>-->
                   <li><%= link_to "設定", edit_user_path(current_user), class:"dropdown-item" %></li>
                   
+                  <% if current_user.admin? %>
+                    <li><%= link_to "まとめ記事の作成", new_eventpost_path , class:"dropdown-item" %></li>
+                  <% end %>
                   <li class="divider border-bottom border-light p-1"></li>
                   <li><%= link_to "ログアウト", logout_path, method: :delete, class:"dropdown-item" %></li>
                 </ul>
