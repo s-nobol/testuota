@@ -6,7 +6,7 @@
     
     <!--ポストステータス-->
     <div class="bg-light p-2">
-      <small><i class="fas fa-clock mr-2"></i>作成時間: <%= eventpost.created_at %></small>
+      <small><i class="fas fa-clock mr-2"></i>作成時間: <%= eventpost.created_at.strftime("%Y年%m月%d日 %H時%M分") %></small>
       
       <% if eventpost.category %> 
       <small><i class="fas fa-folder-open mr-2"></i>カテゴリ
