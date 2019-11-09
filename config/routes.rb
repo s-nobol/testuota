@@ -131,3 +131,5 @@ end
 # 撮り鉄スポットポスト(作成しなくてもいい)
 # rails g model Locationpost title:string content:text image:string
 # rails g controller Locationposts new show edit index
+
+# へ六にデプロイ
