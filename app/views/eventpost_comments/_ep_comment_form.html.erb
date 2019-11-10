@@ -1,5 +1,5 @@
 <!--コメントフォーム-->
-<div class="bg-light p-3" >
+<div class="bg__light  p-3" >
   <h5><b>コメントする</b></h5>
   
    <%= form_for(@eventpost_comment) do |f| %>
@@ -10,7 +10,7 @@
         
         <!--テキストフィールド-class: 'form-control ', id:"exampleFormControlTextarea1" %>->-->
         <label class="mt-2">ユーザー名:</label>
-        <%= f.text_field :user_name, class: 'border w-100 p-1',"rows" => 3 , placeholder: "名前を入力して下さい" %>
+        <%= f.text_field :user_name, class: 'border w-100 p-1',"rows" => 3 , placeholder: "名前を入力して下さい" ,value: "名無しの鉄オタさん"%>
         
         <%= f.text_area :content, class: 'border w-100 p-1 mt-3',"rows" => 5 , placeholder: "コメントを入力して下さい" %>
        

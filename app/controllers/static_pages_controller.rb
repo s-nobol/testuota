@@ -1,7 +1,10 @@
 class StaticPagesController < ApplicationController
+  before_action :links
+  
   
   def home
     # 最新の記事
+    
     @eventposts = Eventpost.order(created_at: :desc).page(params[:page]).per(6)
   end
   

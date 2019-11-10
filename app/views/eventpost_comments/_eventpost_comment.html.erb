@@ -17,8 +17,8 @@
         </span>
         
         <!--作成時間-->
-        <span class="pl-2"><%= eventpost_comment.created_at %></span>
-        <span>id</span>
+        <span class="pl-2"><%= eventpost_comment.created_at.strftime("%Y年%m月%d日 %H時%M分") %></span>
+        <span>ID: <%= eventpost_comment.user_name_id %></span>
         
         <!--削除ボタン-->
         <% if admin_user %>

@@ -1,11 +1,13 @@
 class EventpostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :admin_user,   only: [:new, :create, :edit, :update, :destroy]
+  before_action :links,   only: [:show]
   
   def new
     @eventpost = Eventpost.new
     @user = current_user
   end
+  
   
   def create
     @eventpost = current_user.eventposts.build(eventposts_params)
@@ -22,9 +24,11 @@ class EventpostsController < ApplicationController
     end
   end
   
+  
   def edit
     @eventpost = Eventpost.find(params[:id])
   end
+  
   
   def update
     @eventpost = Eventpost.find(params[:id])
@@ -41,6 +45,7 @@ class EventpostsController < ApplicationController
     end
   end
   
+  
   def destroy
     @eventpost = Eventpost.find(params[:id])
     @eventpost.destroy
@@ -53,6 +58,7 @@ class EventpostsController < ApplicationController
 
   def index
   end
+  
   
   def show
     @eventpost = Eventpost.find(params[:id])

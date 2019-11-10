@@ -1,5 +1,5 @@
 class EventpostCommentsController < ApplicationController
-  
+  require 'digest/md5'
   before_action :logged_in_user, only: [:destroy]
   before_action :admin_user, only: [:destroy]
   
@@ -10,6 +10,8 @@ class EventpostCommentsController < ApplicationController
   def create
     @eventpost = Eventpost.find(params[:eventpost_id]) 
     @eventpost_comment = @eventpost.eventpost_comments.create(eventpost_comment_params)
+  
+    @eventpost_comment.user_name_id = user_ip_hash
     if @eventpost_comment.save
       flash[:success] = 'コメント投稿しました'
       redirect_to @eventpost
@@ -34,8 +36,16 @@ class EventpostCommentsController < ApplicationController
   
   
   private
-   def eventpost_comment_params
+    def eventpost_comment_params
      params.require(:eventpost_comment).permit(:content, :user_name)
-   end
+    end
+    
+    # ハッシュ化
+    def user_ip_hash
+      @ip = request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip
+      @ip = Digest::MD5.hexdigest(@ip)
+      
+      return @ip[0, 12]
+    end  
 end
 

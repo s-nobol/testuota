@@ -133,3 +133,13 @@ end
 # rails g controller Locationposts new show edit index
 
 # へ六にデプロイ
+
+# git init
+# git push heroku master
+# AWS_s3 を反映（反映させないとエラーになる）
+# $ rails test
+# $ git push heroku
+# $ heroku pg:reset DATABASE
+# $ heroku run rails db:migrate
+# $ heroku run rails db:seed
+# $ heroku restart

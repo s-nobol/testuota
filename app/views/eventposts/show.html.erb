@@ -62,15 +62,22 @@
 
         　<!--おすすめ-->
         　<h4 class=" border-left-insert p-2"><b>おすすめ記事一覧</b></h4>
-        　<%= render "static_pages/recommend"%>
+          <div class="ninja-recommend-block" id="89a402bcf2edf91961a626a8d0b53bad">
+          <script type="text/javascript" charset="utf-8" src="//rcm.shinobi.jp/js/imp.js"></script>
+          <script type="text/javascript" charset="utf-8" src="//rcm.shinobi.jp/r/89a402bcf2edf91961a626a8d0b53bad" async></script>
+          </div>
         　
           <!--人気記事一覧-->
           <h4 class=" border-left-insert p-2"><b>人気記事ランキング</b></h4>
-          <%= render "static_pages/popular2"%>
+          <div><div class="ninja-recommend-block" id="4e388b39841c85f5a94fd3e3f66301ea">
+<script type="text/javascript" charset="utf-8" src="//rcm.shinobi.jp/js/imp.js"></script>
+<script type="text/javascript" charset="utf-8" src="//rcm.shinobi.jp/r/4e388b39841c85f5a94fd3e3f66301ea" async></script>
+</div>
+          </div>
         　
           <!--コメント-->
           <div class="mt-5">
-            <h4 class="bg-light border-left-insert p-2"><b>コメント</b></h4>
+            <h4 class="bg__light border-left-insert p-2"><b>コメント</b></h4>
             <div>※記事と関係のないコメント、連投は削除規制対象です</div>   
             <% @i = 0 %>
             <%= render @eventpost_comments  %>
