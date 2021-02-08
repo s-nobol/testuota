@@ -32,7 +32,7 @@ gem 'rails-i18n'
 gem 'kaminari'
 
 # # 画像アップロード
-gem 'carrierwave',             '1.2.2'
+gem 'carrierwave',             '1.3.2'
 gem 'mini_magick',             '4.7.0'
 
 # Use ActiveStorage variant
